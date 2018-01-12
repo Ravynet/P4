@@ -22,6 +22,11 @@ class View
 
     }
 
+    public function printView()
+    {
+        echo $this->render();
+    }
+
     public function render()
     {
 

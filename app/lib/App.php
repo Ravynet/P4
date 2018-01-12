@@ -44,7 +44,7 @@ class App
 
         $layout_view_obj = new View(compact('content'), $layout_path);
 
-        echo $layout_view_obj->render();
+        $layout_view_obj->printView();
     }
 
 }
