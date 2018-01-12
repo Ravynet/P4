@@ -1,0 +1,663 @@
+/* default.php */
+.default {
+    display: flex;
+}
+
+.default #main-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.default .top-bar {
+    background-color: transparent;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+}
+
+.default .top-bar-left {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 75rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    float: none !important;
+}
+
+.default .top-bar ul {
+    background-color: transparent;
+}
+
+.navbar-fixed-top.scrolled {
+    background-color: #2F4351 !important;
+    transition: background-color 200ms linear;
+}
+
+.default .menu a:hover {
+    color: lightblue;
+    text-decoration: none;
+}
+
+.default .menu .active {
+    background-color: #3279B9;
+}
+
+.default .menu .active a {
+    color: lightblue;
+}
+
+.default .menu-text {
+    font-family: serif;
+    color: #999;
+}
+
+.default #bandeau {
+    background-image: url("https://jean-forteroche.alwaysdata.net/webroot/images/landscape_haut_2048.jpg");
+    background-position: center;
+    padding: 6rem 3rem 3rem 3rem;
+    margin-bottom: 0;
+}
+
+.default #bandeau div h1 {
+    color: aliceblue;
+}
+
+.default #bandeau h2 {
+    color: lightblue;
+}
+
+.default .content {
+    /*flex: 1;*/
+    height: 100%;
+    margin: 3rem auto 3rem auto;
+}
+
+.default h1 {
+    font-family: serif;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+}
+
+.default h2 {
+    font-family: serif;
+    font-size: 1.5rem;
+}
+
+.default footer {
+    background-image: url("https://jean-forteroche.alwaysdata.net/webroot/images/landscape_bas_2048.jpg");
+    background-position: center;
+    background-size: cover;
+    color: aliceblue;
+}
+
+.default footer .fa {
+    font-size: 2rem;
+}
+
+.default footer .marketing-site-footer-block {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.default footer h4 {
+    margin-bottom: 1.5rem;
+}
+
+.default footer .marketing-site-footer-block p {
+    margin: 0 0 0 1rem;
+    line-height: 1.125rem;
+}
+
+.default footer .medium-unstack {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0 30px 0;
+}
+
+.default footer .medium-unstack .columns {
+    width: 30%;
+}
+
+.default footer .large-unstack {
+    text-align: center;
+}
+
+@media screen and (max-width: 60em) {
+    /* admin/index.php */
+    .adminIndex .table-expend-row .nbComs {
+        display: none;
+    }
+    /* admin/index.php */
+    .adminIndex .table-expend-row .comSignale {
+        display: none;
+    }
+
+    .adminCommentaire td a {
+        display: block !important;
+    }
+}
+
+@media screen and (max-width: 39.93em) {
+
+    .default .fixed {
+        width: 100%;
+        position: fixed;
+        z-index: 1;
+    }
+
+    .default .top-bar {
+        background-color: #2F4351 !important;
+        top: 41.1px;
+    }
+
+    .default .menu {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .default .login {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+    }
+
+    #bandeau {
+        padding: 3rem 3rem 3rem 3rem;
+    }
+
+    .default .medium-unstack {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .default footer .medium-unstack .columns {
+        display: flex;
+        width: 100%;
+    }
+
+    .default footer .medium-unstack .columns:nth-child(1) {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .default footer .medium-unstack .columns:nth-child(1) ul {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .default footer .medium-unstack .columns:nth-child(1) li:last-child a {
+        margin-right: 0;
+    }
+
+    .default footer .medium-unstack .columns:nth-child(2) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 30px;
+    }
+
+    .default footer .medium-unstack .columns:nth-child(2) h4 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .default footer .medium-unstack .columns:nth-child(2) div {
+        width: 50%;
+        justify-content: center;
+    }
+
+    .default footer .medium-unstack .columns:nth-child(2) div:last-child {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Pagination */
+    .pagination {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+    }
+
+    .pagination li {
+        display: unset !important;
+    }
+
+    /* "accueil" index.php */
+    .home {
+        flex-direction: column;
+    }
+
+    .home div {
+        width: 100% !important;
+    }
+
+    .home .portrait {
+        text-align: center;
+    }
+
+    /* admin/commentaire.php */
+    .adminIndex .table-expend-row .titre {
+        display: none;
+    }
+
+    .blogBillet .comment-section-name {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 28em) {
+
+    /* default.php */
+    .default footer .medium-unstack .columns:nth-child(2) {
+        flex-direction: column;
+    }
+
+    .default footer .medium-unstack .columns:nth-child(2) div {
+        width: 100%;
+    }
+
+    /* /* admin/index.php & admin/commentaire.php */
+    .adminIndex .table-expend-row .date {
+        display: none;
+    }
+}
+
+/* "accueil" index.php */
+.home {
+    display: flex;
+    justify-content: space-between;
+}
+
+.home div {
+    width: 45%;
+}
+
+.home .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.home .text div {
+    display: flex;
+}
+
+.home .text div i {
+    margin-right: 10px;
+    font-size: 1.5rem;
+}
+
+.home .text div a {
+    align-self: center;
+}
+
+/* admin/ajouter.php */
+.adminAjouter .callout .alert {
+    padding: 0.2rem;
+    font-size: 0.875rem;
+}
+
+/* admin/login.php */
+.adminLogin {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.adminLogin .alert {
+    text-align: center;
+}
+
+/* admin/index.php & admin/commentaire.php */
+.adminIndex .alert input {
+    padding: 0;
+    border: 0;
+}
+
+.adminIndex .callout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.adminIndex .blog-post {
+    margin-bottom: 100px;
+}
+
+.adminIndex .comSignale {
+    color: red;
+}
+
+.adminIndex .table-expend-row :last-child {
+    text-align: center;
+}
+
+.adminIndex .table-expend-row :last-child a, .table-expend-row :last-child form button {
+    margin: 0.5rem;
+}
+
+.adminIndex .table-expend-row :last-child form {
+    display: inline;
+}
+
+.adminIndex #delete {
+    margin: 0.5rem;
+}
+
+/* admin/ajouter.php */
+.adminAjouter #mceu_11 {
+    margin-bottom: 1rem !important;
+}
+
+.adminAjouter #apercu {
+    width: 858px;
+}
+
+.adminAjouter .test {
+    width: 100%;
+}
+
+.adminAjouter .cropped {
+    margin-bottom: 20px;
+    border: 1px solid #cacaca;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding-bottom: 41.18%;
+    position: relative;
+}
+
+/* Set the image to fill its parent and make transparent */
+.adminAjouter .cropped img {
+    display: none;
+    position: absolute;
+}
+
+/* admin/modifier.php */
+.adminModifier h3 small {
+    font-size: large;
+}
+
+.adminModifier form label {
+    /*padding: 0.2rem;*/
+    font-size: 0.875rem;
+}
+
+.adminModifier #mceu_11 {
+    margin-bottom: 1rem;
+}
+
+.adminModifier .strechy-wrapper {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.adminModifier .cropped {
+    margin-bottom: 20px;
+    border: 1px solid #cacaca;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding-bottom: 41.18%;
+    position: relative;
+}
+
+/* Set the image to fill its parent and make transparent */
+.adminModifier .cropped img {
+    display: none;
+    position: absolute;
+}
+
+.adminModifier .h3Com {
+    margin-bottom: 3rem;
+}
+
+.adminModifier .h3Com i {
+    color: black;
+}
+
+.adminModifier .comment-section-container {
+    margin-bottom: 2rem;
+    border: 1px solid #ccc;
+    padding: 2rem;
+}
+
+.adminModifier .comment-section-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.adminModifier .auteur {
+    display: flex;
+    font-family: serif;
+    color: #999;
+}
+
+.adminModifier i {
+    align-self: center;
+    margin: 0 10px 0 0;
+    color: #999;
+}
+
+.adminModifier .comment-section-author p {
+    margin: 0 10px 0 0;
+    color: #999;
+}
+
+.adminModifier .comment-section-author img {
+    height: 100%;
+    margin-right: 1rem;
+}
+
+.adminModifier .comment-section-name p {
+    margin-bottom: 0;
+}
+
+.adminModifier .fa-comment-o {
+    margin-right: 20px;
+}
+
+.adminModifier form {
+    display: inline;
+}
+
+/* blog/billet.php */
+.blogBillet .callout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.blogBillet h3 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.blogBillet .callout>:last-child {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.blogBillet .callout>:last-child a {
+    display: inline;
+}
+
+.blogBillet .callout h3 small {
+    font-size: large;
+}
+
+.blogBillet .menu {
+    align-self: center;
+}
+
+.blogBillet .menu > li {
+    padding-right: 1rem;
+}
+
+.blogBillet .blog-post > img {
+    display: block;
+    margin-top: 2rem;
+}
+
+.blogBillet .blog-post > p {
+    margin: 3rem 1rem 5rem 1rem;
+}
+
+.blogBillet .title {
+    font-size: 1.9375rem;
+}
+
+.blogBillet .h3Com {
+    margin: 4rem 0 4rem 0;
+}
+
+.blogBillet .comment-section-container {
+    margin-bottom: 2rem;
+    border: 1px solid #ccc;
+    padding: 2rem;
+}
+
+.blogBillet .comment-section-container a {
+    margin-bottom: 0;
+}
+
+.blogBillet .comment-section-container i:nth-child(2) {
+    float: right;
+    width: 20%;
+    text-align: center;
+    font-size: 2rem;
+    color: lightgreen;
+}
+
+.blogBillet .infobulle {
+    font-size: 2rem;
+    color: palevioletred;
+    position: relative;  /* les .infobulle deviennent référents */
+    cursor: help;
+}
+
+.blogBillet .fa-times-circle-o {
+    color: palevioletred;
+}
+
+.blogBillet .fa-check-circle-o {
+    color: lightgreen;
+}
+
+/* on génère un élément :after lors du survol et du focus :*/
+
+.blogBillet .infobulle:hover::after,
+.blogBillet .infobulle:focus::after {
+    content: attr(aria-label);  /* on affiche aria-label */
+    position: absolute;
+    top: 0.4rem;
+    right: 0rem;
+    left: 160%;
+    transform: translateX(-50%); /* on centre horizontalement  */
+    z-index: 1; /* pour s'afficher au dessus des éléments en position relative */
+    white-space: nowrap;  /* on interdit le retour à la ligne */
+    font-size: 1rem;
+    color: #999;
+}
+
+.blogBillet .comment-section-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.blogBillet .comment-section-author img {
+    height: 100%;
+    margin-right: 1rem;
+}
+
+.blogBillet .comment-section-name {
+    display: flex;
+    align-items: baseline;
+    width: 80%;
+}
+
+.blogBillet .comment-section-name p {
+    margin: 0 10px 0 0;
+    color: #999;
+}
+
+.blogBillet .fa-comment-o {
+    color: black;
+    margin-right: 20px;
+}
+
+.blogBillet i {
+    align-self: center;
+    margin: 0 10px 0 0;
+    color: #999;
+}
+
+.blogBillet .auteur {
+    display: flex;
+    font-family: serif;
+    color: #999;
+}
+
+.blogBillet > h3 > h3 {
+    margin-bottom: 3rem;
+}
+
+.blogBillet form:last-child {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+/* blog/index.php */
+.blogIndex .blog-post {
+    margin-bottom: 100px;
+}
+
+.blogIndex .blog-post h3 {
+    display: flex;
+    flex-direction: column;
+}
+
+.blogIndex .blog-post h3 div {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 858px;
+}
+
+.blogIndex .blog-post small {
+    height: 1.5rem;
+    font-size: large;
+    line-height: inherit;
+}
+
+.blogIndex .blog-post li {
+    align-self: baseline;
+}
+
+.blogIndex i {
+    margin: 0 10px 0 0;
+}
+
+.blogIndex .auteur {
+    font-family: serif;
+    color: #999;
+    padding: 0 10px 0 0;
+}
+
+.blogIndex .callout .menu {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
