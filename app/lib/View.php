@@ -26,7 +26,7 @@ class View
     {
         echo $this->render();
     }
-
+    
     public function render()
     {
 

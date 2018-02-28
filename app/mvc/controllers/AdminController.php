@@ -5,7 +5,6 @@ class AdminController extends Controller
     private $ticket;
     private $comment;
     private $connexion;
-    private $nbComSignaleTotal;
 
     function __construct($data = null)
     {
@@ -333,7 +332,6 @@ class AdminController extends Controller
                 $_SESSION['pseudo'] = $user['pseudo'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['password'] = $user['password'];
-
 
                 if (isset($_POST['connexion-auto'])) {
                     setcookie('id', $user['id'] . '-' . $user['username'] . '-' . $user['password'], time()+ 3600*24*3 , '/', null, false, true);

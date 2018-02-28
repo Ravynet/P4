@@ -416,6 +416,7 @@
 }
 
 .adminModifier .h3Com {
+    margin-top: 3rem;
     margin-bottom: 3rem;
 }
 
@@ -494,6 +495,8 @@
 
 .blogBillet .callout h3 small {
     font-size: large;
+    margin-left: 5px;
+    
 }
 
 .blogBillet .menu {
@@ -659,5 +662,3 @@
     display: flex;
     flex-wrap: wrap;
 }
-
-

@@ -16,7 +16,6 @@ if (isset($data[0])){
       </label>
         <label><input id="connexion-auto" type="checkbox" name="connexion-auto">Se souvenir de moi</label>
       <input type="submit" class="button expanded" name="login" value="Connexion">
-      <p class="text-center"><a href="#">Mot de passe oublié ?</a></p>
     </form>
     <?php
     if (isset($error)){ ?>

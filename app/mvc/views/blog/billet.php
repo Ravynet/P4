@@ -10,7 +10,7 @@ Config::set("site_name", Config::get("site_name").' - '.htmlspecialchars($ticket
             <ul class="menu simple">
                 <h3>
                     <li><small>Publié le : <?= $ticket->getDatePublication()->format('d/m/Y à H:i')?></small></li>
-                    <li><small> / Modifié le : <?= $ticket->getDateModification()->format('d/m/Y à H:i')?></small></li>
+                    <li><small><?= $ticket->getDateModification() != $ticket->getDatePublication() ? '/ Modifié le : '. $ticket->getDateModification()->format('d/m/Y à H\hi') : ''?></small></li>
                 </h3>
             </ul>
             <ul class="menu simple">
@@ -22,9 +22,17 @@ Config::set("site_name", Config::get("site_name").' - '.htmlspecialchars($ticket
         <img class="thumbnail float-center" src="<?= LOCAL.'/webroot/images/'.$ticket->getId().'.jpg'?>">
         <p><?= $ticket->getContent()?></p>
 
-        <div id="commentaire"></div>
         <hr>
 
+        <h3>Envoyer un commentaire</h3>
+        <form action="commenter? <?= $ticket->getId() ?>" method="post">
+            <label>Votre nom :</label><input type="text" name="nom" id="comNom">
+            <label>Contenu :</label><textarea rows="8" cols="60" name="contenu" id="comContenu" required></textarea>
+            <input type="hidden" name="id" value="<?=$ticket->getId() ?>">
+            <input type="submit" id="envoyer" class="button" value="Envoyer" style="margin-top: 1rem; width: 100%">
+        </form>
+        <div id="commentaire"></div>
+        <hr>
 
         <h3 class="h3Com"><i class="fa fa-comment-o" aria-hidden="true"></i><?= count($ticketCom) . (count($ticketCom) > 1 ? ' Commentaires' : ' Commentaire');?></h3>
 
@@ -54,12 +62,5 @@ Config::set("site_name", Config::get("site_name").' - '.htmlspecialchars($ticket
         </div>
         <?php } ?>
 
-        <h3>Envoyer un commentaire</h3>
-        <form action="commenter? <?= $ticket->getId() ?>" method="post">
-            <label>Votre nom :</label><input type="text" name="nom" id="comNom">
-            <label>Contenu :</label><textarea rows="8" cols="60" name="contenu" id="comContenu"></textarea>
-            <input type="hidden" name="id" value="<?=$ticket->getId() ?>">
-            <input type="submit" id="envoyer" class="button" value="Envoyer" style="margin-top: 1rem; width: 100%">
-        </form>
     </div>
 </div>
