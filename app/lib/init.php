@@ -13,6 +13,7 @@ function __autoload($class_name)
     } elseif (file_exists($modele_path)){
         require_once ($modele_path);
     } else {
-        throw new Exception("La classe ----- $class_name ----- n'existe pas", 1);
+        return APP.DS."template".DS.'404.php';
+        //throw new Exception("La classe ----- $class_name ----- n'existe pas", 1);
     }
 }

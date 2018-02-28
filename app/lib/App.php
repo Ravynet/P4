@@ -22,7 +22,13 @@ class App
         $id = intval(self::$router->getParams());
 
         // INSTANTIATE Controller
-        $controller_object = new $controller_class();
+        if (class_exists($controller_class)) {
+            $controller_object = new $controller_class();
+        } else {
+            $controller_class = (ucfirst(Config::get("default_controller").'Controller'));
+            $controller_object = new $controller_class;
+            $controller_method = strtolower(Config::get("default_method"));
+        }
 
         if (method_exists($controller_object, $controller_method)) {
 
