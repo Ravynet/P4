@@ -28,4 +28,3 @@ define("JS", $js);
 $uri = $_SERVER['REQUEST_URI'];
 $uri = str_replace('/P4%20PHP/Programmez%20en%20oriente%20objet%20en%20PHP/Exercices/www/',"", $uri);
 $uri = urldecode(trim($uri, "/"));
-
