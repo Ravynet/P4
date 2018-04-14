@@ -4,7 +4,6 @@ class App
 {
 
     protected static $router;
-    protected static $db;
 
     public static function getRouter()
     {
