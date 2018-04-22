@@ -32,8 +32,9 @@
                             <ul class="menu login">
                             <?php if (isset($_SESSION['id']) && isset($_SESSION['username'])){?>
                                     <li class="menu-text">Bonjour <?= $_SESSION['pseudo'];?></li>
-                                    <li class="<?php if(App::getRouter()->getController() == 'admin') echo 'active'; ?>">
+                                    <li class="<?php if(App::getRouter()->getController() == 'admin') echo 'active'; ?>" id="tableau-bord">
                                         <a id="tableau" href="<?= LOCAL ?>admin?1">Tableau de bord</a>
+                                        <span id="sum-comments"><?= $_SESSION['sumComments'];?></span>
                                     </li>
                                     <li>
                                         <a id="deconnexion" href="<?= LOCAL ?>admin/deconnexion">Déconnexion</a>
@@ -43,6 +44,7 @@
                                         <a id="connexion" href="<?= LOCAL ?>admin?1">Connexion</a>
                                     </li>
                             <?php } ?>
+                            </ul>
                         </div>
                     </div>
                     <!-- End Top Bar -->

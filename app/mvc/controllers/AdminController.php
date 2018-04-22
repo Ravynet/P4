@@ -47,13 +47,13 @@ class AdminController extends Controller
                 array_push($this->data, $nbPages);
                 array_push($this->data, $cPage);
                 array_push($this->data, $sumComReported);
+                $_SESSION['sumComments'] = $sumComReported['nbComSignaleTotal'];
             } else {
                 header('location: admin/login');
             }
         } else {
             return APP.DS."template".DS.'404.php';
         }
-
     }
 
     public function ajouter()
@@ -65,7 +65,6 @@ class AdminController extends Controller
             $newTicket->setContent($_POST['contenu']);
             $newTicket->setAuthor(strip_tags($_POST['auteur']));
             $newTicket->setTitle(strip_tags($_POST['titre']));
-
 
             $newImage = $_FILES['image']['tmp_name'];
             $code = $_FILES['image']['error'];
@@ -278,7 +277,6 @@ class AdminController extends Controller
     {
         header('location: modifier?'.$_POST['id']);
         $this->comment->relacherCom($idCom);
-
     }
 
     public function modererCom($idCom)
@@ -298,7 +296,6 @@ class AdminController extends Controller
     {
         if ($this->params != null) {
             $nbTicket = $this->comment->getTicketsWithComReported();
-            //var_dump($nbTicket);
             $nbTicket = $nbTicket['nbBilletsWithComSignale'];
 
             $cPage = $this->params;
@@ -313,8 +310,6 @@ class AdminController extends Controller
         } else {
             return APP.DS."template".DS.'404.php';
         }
-
-
     }
 
     public function login()
