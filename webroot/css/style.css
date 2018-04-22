@@ -55,30 +55,6 @@
     color: #999;
 }
 
-.default .login {
-    display: flex;
-}
-
-.default #tableau-bord {
-    display: flex;
-    position: relative;
-}
-
-.default #sum-comments {
-    position: absolute;
-    left: 133px;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    border: 1px solid #BEAFAD;
-    background-color: #FAE6E3;
-    color: #B62E1E;
-    line-height: 19px;
-    text-align: center;
-    font-size: 14px;
-    /*padding-right: 1px;*/
-}
-
 .default #bandeau {
     background-image: url("https://jean-forteroche.alwaysdata.net/webroot/images/landscape_haut_2048.jpg");
     background-position: center;

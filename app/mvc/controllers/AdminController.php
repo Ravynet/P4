@@ -47,7 +47,6 @@ class AdminController extends Controller
                 array_push($this->data, $nbPages);
                 array_push($this->data, $cPage);
                 array_push($this->data, $sumComReported);
-                $_SESSION['sumComments'] = $sumComReported['nbComSignaleTotal'];
             } else {
                 header('location: admin/login');
             }
