@@ -3,7 +3,6 @@
 class Router
 {
 
-    protected $uri;
     protected $controller;
     protected $action;
     protected $params;
@@ -44,14 +43,6 @@ class Router
                 $this->params = $uri_parts[1];
             }
         }
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUri()
-    {
-        return $this->uri;
     }
 
     /**

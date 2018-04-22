@@ -51,5 +51,4 @@ class App
 
         $layout_view_obj->printView();
     }
-
 }

@@ -31,7 +31,7 @@ class BlogController extends Controller
         }
     }
 
-    // Affiche les détails sur un billet
+    // Show one ticket
     public function billet($id)
     {
         $ticket = $this->ticket->getTicket($id);
@@ -63,7 +63,6 @@ class BlogController extends Controller
     {
         $comment = $this->comment->getComment($idTicket);
         $data = $comment[0];
-        var_dump($data);
         $this->comment->report($idTicket);
         header('location: billet?' . $data->getTicketId());
     }
