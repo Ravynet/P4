@@ -12,7 +12,7 @@ class AdminController extends Controller
         $this->comment = new CommentsManagerPDO();
         $this->connexion = new AdminMangerPDO();
 
-        parent::__construct($data);
+        parent::__construct();
 
     }
 

@@ -10,7 +10,7 @@ class BlogController extends Controller
         $this->ticket = new TicketsManagerPDO();
         $this->comment = new CommentsManagerPDO();
 
-        parent::__construct($data);
+        parent::__construct();
 
     }
 

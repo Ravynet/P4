@@ -8,8 +8,6 @@ abstract class Manager {
     {
         if ($this->db == null) {
             $this->db = DBFactory::getMysqlConnexionWithPDO();;
-        } else {
-            $this->db = $this->db;
         }
 
         return $this->db;

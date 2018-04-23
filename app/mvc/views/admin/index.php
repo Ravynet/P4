@@ -19,12 +19,10 @@ Config::set("site_name", Config::get("site_name").' - Administration');
 
         <?php if ($sumComReported['nbComSignaleTotal'] > 0) { ?>
             <div class="callout alert">
-                <ul class="menu simple">
-                    <!--<form method="post" action="admin/commentaire?1">-->
-                        <!--<input type="hidden" name="nbCom" value="<?=$sumComReported['nbComSignaleTotal']?>">-->
-                        <li><a href="admin/commentaire?1">Vous avez <?=$sumComReported['nbComSignaleTotal']?> <?= $sumComReported['nbComSignaleTotal'] > 1 ? ' commentaires signalés' : 'commentaire signalé'?></a></li>
-                        <!--<li><input type="submit" class="hollow button" value=""></input></li>-->
-                    <!--</form>-->
+                <ul class="menu simple"><?=$sumComReported['nbComSignaleTotal']?>
+                    <li>
+                        <a href="admin/commentaire?1">Vous avez <?=$sumComReported['nbComSignaleTotal']?> <?= $sumComReported['nbComSignaleTotal'] > 1 ? ' commentaires signalés' : 'commentaire signalé'?></a>
+                    </li>
                 </ul>
             </div>
         <?php

@@ -6,4 +6,4 @@ require_once (LIB.DS.'init.php');
 require_once (CONF.DS.'config.php');
 
 // RUN App
-$app = App::run($uri);
+App::run($uri);

@@ -40,9 +40,9 @@ class View
         }
 
         $controller_dir = $router->getController();
-        $template_name = $router->getAction().".php";
+        $view_name = $router->getAction().".php";
 
-        return MVC.DS.'views'.DS.$controller_dir.DS.$template_name;
+        return MVC.DS.'views'.DS.$controller_dir.DS.$view_name;
     }
 
 }
