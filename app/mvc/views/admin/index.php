@@ -19,7 +19,7 @@ Config::set("site_name", Config::get("site_name").' - Administration');
 
         <?php if ($sumComReported['nbComSignaleTotal'] > 0) { ?>
             <div class="callout alert">
-                <ul class="menu simple"><?=$sumComReported['nbComSignaleTotal']?>
+                <ul class="menu simple">
                     <li>
                         <a href="admin/commentaire?1">Vous avez <?=$sumComReported['nbComSignaleTotal']?> <?= $sumComReported['nbComSignaleTotal'] > 1 ? ' commentaires signalés' : 'commentaire signalé'?></a>
                     </li>
