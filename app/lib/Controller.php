@@ -1,13 +1,17 @@
 <?php
 
-class Controller
+abstract class Controller
 {
 
-    protected $data = [];
+    protected $ticket;
+    protected $comment;
     protected $params;
+    protected $data = [];
 
     function __construct()
     {
+        $this->ticket = new TicketsManagerPDO();
+        $this->comment = new CommentsManagerPDO();
         $this->params = App::getRouter()->getParams();
     }
 
