@@ -2,18 +2,13 @@
 
 class AdminController extends Controller
 {
-    private $ticket;
-    private $comment;
+
     private $connexion;
 
-    function __construct($data = null)
+    function __construct()
     {
-        $this->ticket = new TicketsManagerPDO();
-        $this->comment = new CommentsManagerPDO();
         $this->connexion = new AdminMangerPDO();
-
         parent::__construct();
-
     }
 
     public function index()

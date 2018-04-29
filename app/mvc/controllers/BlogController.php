@@ -2,16 +2,10 @@
 
 class BlogController extends Controller
 {
-    private $ticket;
-    private $comment;
 
-    function __construct($data = null)
+    function __construct()
     {
-        $this->ticket = new TicketsManagerPDO();
-        $this->comment = new CommentsManagerPDO();
-
         parent::__construct();
-
     }
 
     public function index()
