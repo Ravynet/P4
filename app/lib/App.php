@@ -25,8 +25,8 @@ class App
             $controller_object = new $controller_class();
         } else {
             $controller_class = (ucfirst(Config::get("default_controller").'Controller'));
-            $controller_object = new $controller_class;
-            $controller_method = strtolower(Config::get("default_method"));
+            $controller_object = new $controller_class();
+            $controller_method = '';
         }
 
         if (method_exists($controller_object, $controller_method)) {
@@ -39,7 +39,7 @@ class App
             $content = $view_object->render();
         } else {
             $view_path = APP.DS."template".DS.'404.php';
-            $view_object = new View($controller_object->getData(), $view_path);
+            $view_object = new View(null, $view_path);
             $content = $view_object->render();
         }
 
