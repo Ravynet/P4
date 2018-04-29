@@ -72,11 +72,14 @@ class TicketsManagerPDO extends Manager
 
     // SUPPRIME L'ARTICLE SELECTIONNE
     public function delete($id) {
-        $this->getBdd()->exec('DELETE billets, commentaires
+        $q = $this->getBdd()->prepare('DELETE billets, commentaires
                                         FROM billets 
                                         LEFT JOIN commentaires
                                         ON commentaires.bil_id = billets.id
-                                        WHERE id = '.(int) $id);
+                                        WHERE id = :id');
+        $q->bindValue(':id', (int)$id);
+
+        $q->execute();
     }
 
     // MISE A JOUR D'UN ARTICLE
