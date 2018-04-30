@@ -52,7 +52,7 @@ Config::set("site_name", Config::get("site_name").' - Administration');
                 <tbody>
                 <?php foreach ($tickets as $ticket) { ?>
                     <tr class="table-expend-row" data-open-details>
-                        <td class="date"><?= $ticket->getDatePublication()->format('d/m/Y à H:i');?></td>
+                        <td class="date"><?= $ticket->getDatePublication();?></td>
                         <td><?= strlen($ticket->getTitle()) > 50 ? substr($ticket->getTitle(), 0, 50)." ..." : $ticket->getTitle();?></td>
                         <td class="text-center nbComs"> <?= $ticket->getnbComs();?> </td>
                         <td class="text-center comSignale"> <?= $ticket->getNbComSignale() > 0 ?'<a class="comSignale" href="admin/modifier?'.$ticket->getId().'#commentaire">'.$ticket->getNbComSignale().'</a>':'-';?><a></td>

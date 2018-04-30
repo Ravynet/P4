@@ -16,8 +16,8 @@ Config::set("site_name", Config::get("site_name").' - Les épisodes');
             <section class="blog-post">
                 <h3><a href="blog/billet?<?= $ticket->getId()?>"><?= htmlspecialchars($ticket->getTitle())?></a>
                     <div>
-                        <small id="publie">Publié le : <?= $ticket->getDatePublication()->format('d/m/Y à H\hi')?></small>
-                        <small id="modifie"><?= $ticket->getDateModification() != $ticket->getDatePublication() ? 'Modifié le : '. $ticket->getDateModification()->format('d/m/Y à H\hi') : ''?></small>
+                        <small id="publie">Publié le : <?= $ticket->getDatePublication()?></small>
+                        <small id="modifie"><?= $ticket->getDateModification() != $ticket->getDatePublication() ? 'Modifié le : '. $ticket->getDateModification() : ''?></small>
                     </div>
                 </h3>
                 <img class="thumbnail" src="<?= LOCAL.'/webroot/images/'.$ticket->getId().'.jpg'?>" alt="Image <?=htmlspecialchars($ticket->getTitle())?>">

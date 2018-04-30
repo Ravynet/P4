@@ -9,8 +9,8 @@ Config::set("site_name", Config::get("site_name").' - '.htmlspecialchars($ticket
         <div class="callout">
             <ul class="menu simple">
                 <h3>
-                    <li><small>Publié le : <?= $ticket->getDatePublication()->format('d/m/Y à H:i')?></small></li>
-                    <li><small><?= $ticket->getDateModification() != $ticket->getDatePublication() ? '/ Modifié le : '. $ticket->getDateModification()->format('d/m/Y à H\hi') : ''?></small></li>
+                    <li><small>Publié le : <?= $ticket->getDatePublication()?></small></li>
+                    <li><small><?= $ticket->getDateModification() != $ticket->getDatePublication() ? '/ Modifié le : '. $ticket->getDateModification() : ''?></small></li>
                 </h3>
             </ul>
             <ul class="menu simple">

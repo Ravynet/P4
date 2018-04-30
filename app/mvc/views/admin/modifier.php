@@ -21,7 +21,7 @@ Config::set("site_name", Config::get("site_name").' - '.$ticket->getTitle());
 
 <div class="adminModifier">
     <h3>
-        <small>Publié le : <?php echo $ticket->getDatePublication()->format('d/m/Y à H:i');?> </small>
+        <small>Publié le : <?php echo $ticket->getDatePublication();?> </small>
         <?php if ($ticket->getDateModification() != $ticket->getDatePublication()) {echo '<small> / Modifié le : ', $ticket->getDateModification()->format('d/m/Y à H:i'), '</small>';}?>
     </h3>
     <form method="post" enctype="multipart/form-data" runat="server">
