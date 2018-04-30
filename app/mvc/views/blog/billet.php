@@ -13,7 +13,7 @@ Config::set("site_name", Config::get("site_name").' - '.htmlspecialchars($ticket
                     <li><small><?= $ticket->getDateModification() != $ticket->getDatePublication() ? '/ Modifié le : '. $ticket->getDateModification() : ''?></small></li>
                 </h3>
             </ul>
-            <ul class="menu simple">
+            <ul class="menu simple" data-smooth-scroll>
                 <li class="auteur"><i class="fa fa-user" aria-hidden="true"></i><span><?= htmlspecialchars($ticket->getAuthor())?></span></li>
                 <li><a href="#commentaire"><?= count($ticketCom) . (count($ticketCom) > 1 ? ' Commentaires' : ' Commentaire'); ?></a></li>
             </ul>
@@ -25,7 +25,7 @@ Config::set("site_name", Config::get("site_name").' - '.htmlspecialchars($ticket
         <hr>
 
         <h3>Envoyer un commentaire</h3>
-        <form action="commenter? <?= $ticket->getId() ?>" method="post">
+        <form action="commenter?<?=$ticket->getId()?>" method="post">
             <label>Votre nom :</label><input type="text" name="nom" id="comNom">
             <label>Contenu :</label><textarea rows="8" cols="60" name="contenu" id="comContenu" required></textarea>
             <input type="hidden" name="id" value="<?=$ticket->getId() ?>">
