@@ -31,6 +31,7 @@ class CommentsManagerPDO extends Manager
         }
 
         return $billets;
+
     }
 
     // RECUPERE LE NOMBRE TOTAL DE COMMENTAIRES SIGNALES POUR L'ADMIN
@@ -59,7 +60,8 @@ class CommentsManagerPDO extends Manager
     // RECUPERE LES COMMENTAIRES SUIVANT L'ARTICLE SELECTIONNE
     public function getComments($id){
 
-        $q = $this->getBdd()->prepare('SELECT commentaires.*
+        $q = $this->getBdd()->prepare('SELECT commentaires.*,
+                                                DATE_FORMAT(commentaires.com_date, "%d/%m/%Y à %Hh%i") AS com_date
                                                 FROM commentaires
                                                 WHERE commentaires.bil_id = :id
                                                 ORDER BY commentaires.com_date ASC');
@@ -70,10 +72,6 @@ class CommentsManagerPDO extends Manager
         $q->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Commentaire');
 
         $commentaires = $q->fetchAll();
-
-        foreach ($commentaires as $commentaire) {
-            $commentaire->setComDate(new DateTime($commentaire->getComDate()));
-        }
 
         return $commentaires;
     }
