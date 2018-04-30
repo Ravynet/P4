@@ -7,7 +7,7 @@ abstract class Manager {
     public function getBdd()
     {
         if ($this->db == null) {
-            $this->db = DBFactory::getMysqlConnexionWithPDO();;
+            $this->db = DBFactory::getMysqlConnexionWithPDO();
         }
 
         return $this->db;
