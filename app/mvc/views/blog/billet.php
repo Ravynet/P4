@@ -44,7 +44,7 @@ Config::set("site_name", Config::get("site_name").' - '.htmlspecialchars($ticket
                         <i class="fa fa-user" aria-hidden="true"></i>
                         <p><?= htmlspecialchars($comment->getComAuteur()) ?></p>
                     </div>
-                    <p>Le <?= $comment->getComDate()->format('d/m/Y à H:i') ?></p>
+                    <p>Le <?= $comment->getComDate() ?></p>
                 </div>
             </div>
             <div class="comment-section-text">

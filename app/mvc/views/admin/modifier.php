@@ -57,7 +57,7 @@ Config::set("site_name", Config::get("site_name").' - '.$ticket->getTitle());
                             <i class="fa fa-user" aria-hidden="true"></i>
                             <p><?=$comment->getComAuteur()?></p>
                         </div>
-                        <p>Le <?= $comment->getComDate()->format('d/m/Y à H:i')?></p>
+                        <p>Le <?= $comment->getComDate() ?></p>
                     </div>
                     <div>
                         <form action="relacherCom?<?=$comment->getComId()?>" method="post">
