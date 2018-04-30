@@ -92,8 +92,6 @@ class CommentsManagerPDO extends Manager
 
         $commentaire = $q->fetchAll();
 
-        //$commentaire->setComDate(new DateTime($commentaire->getComDate()));
-
         return $commentaire;
     }
 

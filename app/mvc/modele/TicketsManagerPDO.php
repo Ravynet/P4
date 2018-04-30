@@ -8,7 +8,9 @@ class TicketsManagerPDO extends Manager
     public function getTicket($id) {
 
         $q = $this->getBdd()->prepare('SELECT billets.*, 
-                                                SUM(if(commentaires.com_signale >= 0, 1, 0)) AS nbComs,
+                                                DATE_FORMAT(billets.datePublication, "%d/%m/%Y à %Hh%i") AS datePublication,
+                                                DATE_FORMAT(billets.dateModification, "%d/%m/%Y à %Hh%i") AS dateModification,
+                                                COUNT(commentaires.bil_id) AS nbComs,
                                                 SUM(if(commentaires.com_signale = 1, 1, 0)) AS nbComSignale
                                                 FROM billets
                                                 LEFT JOIN commentaires ON commentaires.bil_id = :id
@@ -21,11 +23,6 @@ class TicketsManagerPDO extends Manager
         $q->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Billet');
 
         $billet = $q->fetch();
-
-        if ($billet != false) {
-            $billet->setDatePublication(new DateTime($billet->getDatePublication()));
-            $billet->setDateModification(new DateTime($billet->getDateModification()));
-        }
 
         return $billet;
 
@@ -48,7 +45,9 @@ class TicketsManagerPDO extends Manager
             $nbPages = ceil($nbBillets['nbBillets']/$perPage);
 
             $q = $this->getBdd()->query("SELECT billets.*,
-                                                SUM(if(commentaires.com_signale >= 0, 1, 0)) AS nbComs,
+                                                DATE_FORMAT(billets.datePublication, \"%d/%m/%Y à %Hh%i\") AS datePublication,
+                                                DATE_FORMAT(billets.dateModification, \"%d/%m/%Y à %Hh%i\") AS dateModification,
+                                                COUNT(commentaires.bil_id) AS nbComs,
                                                 SUM(if(commentaires.com_signale = 1, 1, 0)) AS nbComSignale
                                                 FROM billets
                                                 LEFT JOIN commentaires ON billets.id = commentaires.bil_id
@@ -60,10 +59,6 @@ class TicketsManagerPDO extends Manager
 
             $billets = $q->fetchAll();
 
-            foreach ($billets as $billet) {
-                $billet->setDatePublication(new DateTime($billet->getDatePublication()));
-                $billet->setDateModification(new DateTime($billet->getDateModification()));
-            }
         }
 
         return $billets;
