@@ -13,14 +13,15 @@ class TicketsManagerPDO extends Manager
                                                 COUNT(commentaires.bil_id) AS nbComs,
                                                 SUM(if(commentaires.com_signale = 1, 1, 0)) AS nbComSignale
                                                 FROM billets
-                                                LEFT JOIN commentaires ON commentaires.bil_id = :id
+                                                LEFT JOIN commentaires
+                                                  ON commentaires.bil_id = :id
                                                 WHERE billets.id = :id
                                                 GROUP BY billets.id
                                                 ORDER BY billets.id DESC');
         $q->bindValue(':id', $id, PDO::PARAM_INT);
         $q->execute();
 
-        $q->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Billet');
+        $q->setFetchMode(PDO::FETCH_CLASS, 'Billet');
 
         $billet = $q->fetch();
 
@@ -50,15 +51,13 @@ class TicketsManagerPDO extends Manager
                                                 COUNT(commentaires.bil_id) AS nbComs,
                                                 SUM(if(commentaires.com_signale = 1, 1, 0)) AS nbComSignale
                                                 FROM billets
-                                                LEFT JOIN commentaires ON billets.id = commentaires.bil_id
+                                                LEFT JOIN commentaires
+                                                  ON billets.id = commentaires.bil_id
                                                 GROUP BY billets.id
                                                 ORDER BY billets.id DESC
                                                 LIMIT ".(($cPage-1)*$perPage).",$perPage");
 
-            $q->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Billet');
-
-            $billets = $q->fetchAll();
-
+            $billets = $q->fetchAll(PDO::FETCH_CLASS,'Billet');
         }
 
         return $billets;
@@ -70,9 +69,9 @@ class TicketsManagerPDO extends Manager
         $q = $this->getBdd()->prepare('DELETE billets, commentaires
                                         FROM billets 
                                         LEFT JOIN commentaires
-                                        ON commentaires.bil_id = billets.id
+                                          ON commentaires.bil_id = billets.id
                                         WHERE id = :id');
-        $q->bindValue(':id', (int)$id);
+        $q->bindValue(':id', $id, PDO::PARAM_INT);
 
         $q->execute();
     }
