@@ -10,6 +10,10 @@
     width: 100%;
 }
 
+.default .title-bar {
+    background: #2F4351 !important;
+}
+
 .default .top-bar {
     background-color: transparent;
     position: fixed;
@@ -85,6 +89,7 @@
 .default h2 {
     font-family: serif;
     font-size: 1.5rem;
+    margin-bottom: 2rem !important;
 }
 
 .default footer {
@@ -104,7 +109,7 @@
     margin-bottom: 1rem;
 }
 
-.default footer h4 {
+.default footer h3 {
     margin-bottom: 1.5rem;
 }
 
@@ -140,6 +145,10 @@
     .adminCommentaire td a {
         display: block !important;
     }
+
+    .blogBillet .comment-section-container a {
+        width: 100% !important;
+    }
 }
 
 @media screen and (max-width: 39.93em) {
@@ -152,7 +161,7 @@
 
     .default .top-bar {
         background-color: #2F4351 !important;
-        top: 41.1px;
+        /*top: 41.1px;*/
     }
 
     .default .menu {
@@ -201,7 +210,7 @@
         margin-top: 30px;
     }
 
-    .default footer .medium-unstack .columns:nth-child(2) h4 {
+    .default footer .medium-unstack .columns:nth-child(2) h3 {
         width: 100%;
         text-align: center;
     }
@@ -479,9 +488,19 @@
     margin-bottom: 2rem;
 }
 
+.blogBillet #envoyer {
+    margin-top: 1rem;
+    width: 100%
+}
+
 .blogBillet h3 {
     display: flex;
     flex-wrap: wrap;
+}
+
+.blogBillet #sendComment {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 
 .blogBillet .callout>:last-child {
@@ -509,11 +528,12 @@
 
 .blogBillet .blog-post > img {
     display: block;
-    margin-top: 2rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
 }
 
 .blogBillet .blog-post > p {
-    margin: 3rem 1rem 5rem 1rem;
+    margin: 2rem 1rem 2rem 1rem !important;
 }
 
 .blogBillet .title {
@@ -530,20 +550,19 @@
     padding: 2rem;
 }
 
-.blogBillet .comment-section-container a {
-    margin-bottom: 0;
+.blogBillet .comment-section-text {
+    display: flex;
+    flex-direction: column;
 }
 
-.blogBillet .comment-section-container i:nth-child(2) {
-    float: right;
-    width: 20%;
-    text-align: center;
-    font-size: 2rem;
-    color: lightgreen;
+.blogBillet .comment-section-container a {
+    width: 30%;
+    margin-bottom: 0;
 }
 
 .blogBillet .infobulle {
     font-size: 2rem;
+    align-self: baseline;
     color: palevioletred;
     position: relative;  /* les .infobulle deviennent référents */
     cursor: help;
@@ -626,12 +645,13 @@
     margin-bottom: 100px;
 }
 
-.blogIndex .blog-post h3 {
+.blogIndex .blog-post h1 {
     display: flex;
     flex-direction: column;
+    font-size: 36px;
 }
 
-.blogIndex .blog-post h3 div {
+.blogIndex .blog-post h1 div {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
