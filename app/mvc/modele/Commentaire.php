@@ -4,9 +4,6 @@ class Commentaire {
 
     protected $com_id, $com_date, $com_auteur, $com_contenu, $bil_id, $com_signale;
 
-    const NOM_INVALIDE = 1;
-    const CONTENU_INVALIDE = 2;
-
     public function __construct($donnees = []) {
         if (!empty($donnees))
         {
@@ -117,7 +114,7 @@ class Commentaire {
 
     public function setComSignale($com_signale)
     {
-            $this->com_signale = $com_signale;
+        $this->com_signale = $com_signale;
     }
 
 }
