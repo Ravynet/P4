@@ -14,7 +14,7 @@ $(window).load(function(){
                 var filename = input.files[0].name;
                 var extension = filename.replace(/^.*\./, '');
                 var size = input.files[0].size;
-                console.log(extension);
+                //console.log(extension);
 
                 if (size > $("input[name='MAX_FILE_SIZE']").val()) {
                     $('.cropped').css('background-image', 'url()');
@@ -84,7 +84,59 @@ $(window).load(function(){
     // CHANGE NAVBAR CLASS WHEN SCROLLED
     $(document).scroll(function () {
         var $nav = $(".navbar-fixed-top");
-        $nav.toggleClass('scrolled', $(this).scrollTop() > $('.menu-text').height());
+        $nav.toggleClass('scrolled', $(this).scrollTop() > $('.top-bar').height());
+    });
+
+    // Smooth Scroll sur page billet.php
+    $('.js-scrollTo').on('click', function() { // Au clic sur un élément
+        var page = $(this).attr('href'); // Page cible
+        var speed = 750; // Durée de l'animation (en ms)
+        $('html, body').animate( { scrollTop: $(page).offset().top }, speed ); // Go
+        return false;
+    });
+
+    // Ajax supprimer un commentaire
+    $('.delete').on('submit', function(e){
+        e.preventDefault();
+        var $form = $(this);
+        var $url = $form.attr('action');
+        $.post($url)
+            .done(function(){
+                $form.parent().parent($('.comment-section-container')).slideUp('slow', function () {
+                    $form.parent().parent($('.comment-section-container')).remove();
+                });
+            })
+    });
+
+    // Ajax envoyer un commentaire
+    $('#add-comment').on('submit', function(e) {
+        e.preventDefault();
+        $('#envoyer').prop('value', 'Envoi en cours...');
+        var $form = $(this);
+        var $url = $form.attr('action');
+        $.post($url, $form.serializeArray())
+            .done(function(data, text, jqxhr){
+                $response = $(jqxhr.responseText);
+                $('.h3Com').after($response);
+                $response.hide().fadeIn();
+                $('#comNom').val('');
+                $('#comContenu').val('');
+                $('#envoyer').prop('value', 'Envoyer');
+            })
+    });
+
+    // Ajax signaler un commentaire
+    $('.blog-post').on('click', '.hollow', function (e) {
+        e.preventDefault();
+        var $a = $(this);
+        var $url = $a.attr('href');
+        $.ajax($url, {type: 'POST'})
+            .done(function(){
+                $a.parent($('.comment-section-text')).fadeOut('slow', function () {
+                    $a.parent($('.comment-section-text')).after('<i class="fa fa-times-circle-o infobulle" aria-hidden="true" aria-label="Commentaire signalé"></i>');
+                    $a.parent($('.comment-section-text')).after('<p>Ce commentaire a été signalé comme inapproprié.</p>');
+                });
+            })
     });
 
 });
