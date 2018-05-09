@@ -1,6 +1,6 @@
 <?php
 
-Config::set("site_name","Billet simple pour l'Alaska - Jeean FORTEROCHE");
+Config::set("site_name","Billet simple pour l'Alaska - Jean FORTEROCHE");
 Config::set("default_controller", "accueil");
 Config::set("default_action", "index");
 Config::set("default_layout", "default");
