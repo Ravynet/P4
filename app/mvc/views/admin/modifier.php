@@ -22,7 +22,7 @@ Config::set("site_name", Config::get("site_name").' - '.$ticket->getTitle());
 <div class="adminModifier">
     <h3>
         <small>Publié le : <?php echo $ticket->getDatePublication();?> </small>
-        <?php if ($ticket->getDateModification() != $ticket->getDatePublication()) {echo '<small> / Modifié le : ', $ticket->getDateModification()->format('d/m/Y à H:i'), '</small>';}?>
+        <?php if ($ticket->getDateModification() != $ticket->getDatePublication()) {echo '<small> / Modifié le : ', $ticket->getDateModification(), '</small>';}?>
     </h3>
     <form method="post" enctype="multipart/form-data" runat="server">
         <label>Titre :</label><input type="text" name="titre" value="<?= $ticket->getTitle()?>">
@@ -60,15 +60,11 @@ Config::set("site_name", Config::get("site_name").' - '.$ticket->getTitle());
                         <p>Le <?= $comment->getComDate() ?></p>
                     </div>
                     <div>
-                        <form action="relacherCom?<?=$comment->getComId()?>" method="post">
-                            <input type="hidden" name="id" value="<?=$ticket->getId()?>">
-                            <button type="submit" class="hollow button button success" href="relacherCom?">Relacher ce commentaire</button>
-                        </form>
-                        <form action="supprimerCom?<?=$comment->getComId()?>" method="post">
+                        <form action="supprimerCom?<?=$comment->getComId()?>" method="post" class="delete">
                             <input type="hidden" name="id" value="<?=$ticket->getId()?>">
                             <button type="submit" class="hollow button button alert" href="supprimerCom?">Supprimer ce commentaire</button>
                         </form>
-                        <form action="modererCom?<?=$comment->getComId()?>" method="post">
+                        <form action="modererCom?<?=$comment->getComId()?>" method="post" class="moderate">
                             <input type="hidden" name="id" value="<?=$ticket->getId()?>">
                             <button type="submit" class="hollow button" href="modererCom?">Modérer ce commentaire</button>
                             <textarea class="montextarea" rows="10" cols="60" name="contenuCommentaire"><?=$comment->getComContenu()?></textarea>
