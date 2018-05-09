@@ -1,6 +1,5 @@
 <?php
 
-
 class CommentsManagerPDO extends Manager
 {
 
@@ -14,7 +13,7 @@ class CommentsManagerPDO extends Manager
                                                 SUM(if(commentaires.com_signale >= 0, 1, 0)) AS nbComs,
                                                 SUM(if(commentaires.com_signale = 1, 1, 0)) AS nbComSignale
                                                 FROM billets
-                                                LEFT JOIN commentaires ON billets.id = commentaires.bil_id
+                                                INNER JOIN commentaires ON billets.id = commentaires.bil_id
                                                 WHERE commentaires.com_signale = 1
                                                 GROUP BY billets.id
                                                 ORDER BY billets.id DESC
@@ -64,12 +63,12 @@ class CommentsManagerPDO extends Manager
                                                 DATE_FORMAT(commentaires.com_date, "%d/%m/%Y à %Hh%i") AS com_date
                                                 FROM commentaires
                                                 WHERE commentaires.bil_id = :id
-                                                ORDER BY commentaires.com_date ASC');
+                                                ORDER BY commentaires.com_date DESC');
 
         $q->bindValue(':id', (int) $id, PDO::PARAM_INT);
         $q->execute();
 
-        $q->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Commentaire');
+        $q->setFetchMode(PDO::FETCH_CLASS, 'Commentaire');
 
         $commentaires = $q->fetchAll();
 
@@ -101,7 +100,7 @@ class CommentsManagerPDO extends Manager
 
         $q->bindValue(':nom', $commentaire->getComAuteur());
         $q->bindValue(':contenu', $commentaire->getComContenu());
-        $q->bindValue(':id_billet', $commentaire->getTicketId());
+        $q->bindValue(':id_billet', $commentaire->getTicketId(), PDO::PARAM_INT);
 
         $q->execute();
 
@@ -112,36 +111,46 @@ class CommentsManagerPDO extends Manager
 
         $q = $this->getBdd()->prepare('UPDATE commentaires SET com_signale = 1 WHERE com_id = :id');
 
-        $q->bindValue(':id', (int) $commentaire, PDO::PARAM_INT);
+        $q->bindValue(':id', $commentaire, PDO::PARAM_INT);
 
         $q->execute();
     }
 
     // SUPPRIME UN COMMENTAIRE
     public function deleteCom($id) {
-
-        $this->getBdd()->exec('DELETE FROM commentaires
-                                        WHERE com_id = '.(int) $id);
+        $q = $this->getBdd()->prepare('DELETE FROM commentaires
+                                                WHERE com_id = :id');
+        $q->bindValue(':id', $id, PDO::PARAM_INT);
+        $q->execute();
     }
 
-    // SUPPRIME UN COMMENTAIRE
-    public function relacherCom($id) {
-
-        $this->getBdd()->exec('UPDATE commentaires
-                                        SET com_signale = 2
-                                        WHERE com_id = '.(int) $id);
-    }
-
+    // MODERE UN COMMENTAIRE
     public function moderateCom(Commentaire $commentaire) {
 
         $q = $this->getBdd()->prepare('UPDATE commentaires
-                                        SET com_signale = 2, com_contenu = :contenu
-                                        WHERE com_id = :id');
+                                                SET com_signale = 2, com_contenu = :contenu
+                                                WHERE com_id = :id');
 
-        $q->bindValue(':id', $commentaire->getComID());
+        $q->bindValue(':id', $commentaire->getComID(), PDO::PARAM_INT);
         $q->bindValue(':contenu', $commentaire->getComContenu());
 
         $q->execute();
+    }
+
+    public function lastComment($user) {
+        $q = $this->getBdd()->prepare('SELECT *,
+                                                DATE_FORMAT(commentaires.com_date, "%d/%m/%Y à %Hh%i") AS com_date
+                                                FROM commentaires
+                                                WHERE com_auteur = :user
+                                                ORDER BY com_id DESC LIMIT 1');
+        $q->bindValue(':user', $user, PDO::PARAM_STR);
+        $q->execute();
+
+        $q->setFetchMode(PDO::FETCH_CLASS, 'Commentaire');
+
+        $lastComment = $q->fetch();
+
+        return $lastComment;
     }
 
 }
