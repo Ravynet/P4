@@ -15,21 +15,21 @@ Config::set("site_name", Config::get("site_name").' - '.htmlspecialchars($ticket
             </ul>
             <ul class="menu simple" data-smooth-scroll>
                 <li class="auteur"><i class="fa fa-user" aria-hidden="true"></i><span><?= htmlspecialchars($ticket->getAuthor())?></span></li>
-                <li><a href="#commentaire"><?= count($ticketCom) . (count($ticketCom) > 1 ? ' Commentaires' : ' Commentaire'); ?></a></li>
+                <li><a href="#commentaire" class="js-scrollTo"><?= count($ticketCom) . (count($ticketCom) > 1 ? ' Commentaires' : ' Commentaire'); ?></a></li>
             </ul>
         </div>
-        <h2 class="title"><?= htmlspecialchars($ticket->getTitle())?></h2>
+        <h1 class="title"><?= htmlspecialchars($ticket->getTitle())?></h1>
         <img class="thumbnail float-center" src="<?= LOCAL.'/webroot/images/'.$ticket->getId().'.jpg'?>">
         <p><?= $ticket->getContent()?></p>
 
         <hr>
 
-        <h3>Envoyer un commentaire</h3>
-        <form action="commenter?<?=$ticket->getId()?>" method="post">
+        <h3 id="sendComment">Envoyer un commentaire</h3>
+        <form action="commenter?<?=$ticket->getId()?>" method="post" id="add-comment">
             <label>Votre nom :</label><input type="text" name="nom" id="comNom">
             <label>Contenu :</label><textarea rows="8" cols="60" name="contenu" id="comContenu" required></textarea>
             <input type="hidden" name="id" value="<?=$ticket->getId() ?>">
-            <input type="submit" id="envoyer" class="button" value="Envoyer" style="margin-top: 1rem; width: 100%">
+            <input type="submit" id="envoyer" class="button" value="Envoyer">
         </form>
         <div id="commentaire"></div>
         <hr>
@@ -49,8 +49,7 @@ Config::set("site_name", Config::get("site_name").' - '.htmlspecialchars($ticket
             </div>
             <div class="comment-section-text">
                 <p><?= $comment->getComSignale() !=1 ? $comment->getComContenu() : "Ce commentaire a été signalé comme inapproprié."; ?></p>
-            </div>
-            <?php
+                <?php
                 if ($comment->getComSignale() == 1) {
                     echo '<i class="fa fa-times-circle-o infobulle" aria-hidden="true" aria-label="Commentaire signalé"></i>';
                 } elseif ($comment->getComSignale() == 2) {
@@ -58,9 +57,11 @@ Config::set("site_name", Config::get("site_name").' - '.htmlspecialchars($ticket
                 } else {
                     echo '<a class="hollow button" href="signaler?'.$comment->getComId().'">Signaler ce commentaire</a>';
                 }
-            ?>
+                ?>
+            </div>
         </div>
         <?php } ?>
 
     </div>
 </div>
+
