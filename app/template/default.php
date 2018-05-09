@@ -64,7 +64,7 @@
                 <footer>
                     <div class="row medium-unstack">
                         <div class="columns">
-                            <h4 class="marketing-site-footer-name">Yeti Snowcone</h4>
+                            <h3 class="marketing-site-footer-name">Yeti Snowcone</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita dolorem accusantium architecto id quidem, itaque nesciunt quam ducimus atque.</p>
                             <ul class="menu marketing-site-footer-menu-social simple">
                                 <li><a href="#"><i class="fa fa-youtube-square" aria-hidden="true"></i></a></li>
@@ -73,7 +73,7 @@
                             </ul>
                         </div>
                         <div class="columns">
-                            <h4 class="marketing-site-footer-title">Contactez moi</h4>
+                            <h3 class="marketing-site-footer-title">Contactez moi</h3>
                             <div class="marketing-site-footer-block">
                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                                 <p>100 W Rincon<br>San Francisco, CA 94015</p>
@@ -105,17 +105,21 @@
                 mode : "specific_textareas",
                 editor_selector : "montextarea",
                 menubar: false,
+
                 toolbar1: 'insertfile undo redo',
-                toolbar2: 'formatselect | fontselect fontsizeselect | bold italic strikethrough | link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent | removeformat',
+                toolbar2: 'formatselect | fontselect fontsizeselect | bold italic strikethrough | link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent | removeformat |',
+                block_formats: 'Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6;Preformatted=pre',
                 fontsize_formats: '8pt 10pt 12pt 14pt 18pt 24pt 36pt',
                 init_instance_callback: function (editor) {
                     editor.on('keydown', function (e) {
                         $('.erreurTextarea').remove();
+
                     });
+                $('.mce-notification').remove();
                 }
             });
         </script>
-        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
         <script type='text/javascript'>
             $(document).foundation();
