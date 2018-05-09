@@ -20,7 +20,7 @@ class View
     {
         echo $this->render();
     }
-    
+
     public function render()
     {
         $data = $this->data;
@@ -29,6 +29,13 @@ class View
         $content = ob_get_clean();
 
         return $content;
+    }
+
+    public function printViewAjax()
+    {
+        $this->path = substr($this->path,0,-4).'Ajax.php';
+        $data = $this->data[0];
+        include $this->path;
     }
 
     public static function getDefaultViewPath()
