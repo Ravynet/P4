@@ -44,12 +44,18 @@ class BlogController extends Controller
 
             $newComment = new Commentaire();
 
-            $newComment->setComAuthor($_POST['nom']);
-            $newComment->setComContent($_POST['contenu']);
+            $newComment->setComAuthor(htmlspecialchars($_POST['nom']));
+            $newComment->setComContent(htmlspecialchars($_POST['contenu']));
             $newComment->setTicketId($idTicket);
 
             $this->comment->addComment($newComment);
-            header('location: billet?' . $idTicket);
+
+            if (App::isAjax()) {
+                $lastComment = $this->comment->lastComment($_POST['nom']);
+                array_push($this->data, $lastComment);
+            } else {
+                header('location: billet?' . $idTicket . '#commentaire');
+            }
         }
     }
 
@@ -58,6 +64,7 @@ class BlogController extends Controller
         $comment = $this->comment->getComment($idTicket);
         $data = $comment[0];
         $this->comment->report($idTicket);
-        header('location: billet?' . $data->getTicketId());
+        header('location: billet?' . $data->getTicketId() . '#commentaire');
     }
+
 }
