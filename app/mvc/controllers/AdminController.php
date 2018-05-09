@@ -267,10 +267,10 @@ class AdminController extends Controller
         $this->comment->deleteCom($idCom);
     }
 
-    public function relacherCom($idCom)
+    public function releaseCom($idCom)
     {
         header('location: modifier?'.$_POST['id']);
-        $this->comment->relacherCom($idCom);
+        $this->comment->releaseCom($idCom);
     }
 
     public function modererCom($idCom)
