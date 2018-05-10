@@ -31,7 +31,7 @@ class AdminController extends Controller
             }
 
             $cPage = $this->params;
-            $nbTicket = $this->ticket->getPaging();
+            $nbTicket = $this->paging->getPaging();
             $nbPages = ceil($nbTicket['nbBillets']/Config::get("art_per_page_admin"));
 
             if (isset($_SESSION['id']) && isset($_SESSION['username'])) {

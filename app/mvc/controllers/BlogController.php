@@ -12,7 +12,7 @@ class BlogController extends Controller
     {
         $cPage = $this->params;
         if ($cPage != null) {
-            $nbTicket = $this->ticket->getPaging();
+            $nbTicket = $this->paging->getPaging();
             $nbPages = ceil($nbTicket['nbBillets']/Config::get("art_per_page_blog"));
 
             $tickets = $this->ticket->getAllBillets($nbTicket, Config::get("art_per_page_blog"), $cPage);

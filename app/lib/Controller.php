@@ -6,12 +6,14 @@ abstract class Controller
     protected $ticket;
     protected $comment;
     protected $params;
+    protected $paging;
     protected $data = [];
 
     function __construct()
     {
         $this->ticket = new TicketsManagerPDO();
         $this->comment = new CommentsManagerPDO();
+        $this->paging = new PagingManagerPDO();
         $this->params = App::getRouter()->getParams();
     }
 
