@@ -47,7 +47,11 @@ Config::set("site_name", Config::get("site_name").' - '.$ticket->getTitle());
     <div id="commentaire"></div>
     <hr>
 
-    <h3 class="h3Com"><i class="fa fa-comment-o" aria-hidden="true"></i><?= $ticket->getNbComSignale() . ($ticket->getNbComSignale() > 1 ? ' Commentaires signalés' : ' Commentaire signalé');?></h3>
+    <span class="h3Com">
+        <i class="fa fa-comment-o" aria-hidden="true"></i>
+        <h3><?= $ticket->getNbComSignale() . ($ticket->getNbComSignale() > 1 ? ' Commentaires signalés' : ' Commentaire signalé');?></h3>
+    </span>
+
     <?php foreach ($ticketCom as $comment){
         if ($comment->getComSignale() == 1) { ?>
 
