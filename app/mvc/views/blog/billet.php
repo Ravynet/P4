@@ -55,7 +55,7 @@ Config::set("site_name", Config::get("site_name").' - '.htmlspecialchars($ticket
                 } elseif ($comment->getComSignale() == 2) {
                     echo '<i class="fa fa-check-circle-o infobulle" aria-hidden="true" aria-label="Commentaire validé par l\'administrateur"></i>';
                 } else {
-                    echo '<a class="hollow button" href="signaler?'.$comment->getComId().'">Signaler ce commentaire</a>';
+                    echo '<a class="hollow button report" href="signaler?'.$comment->getComId().'"i>Signaler ce commentaire</a>';
                 }
                 ?>
             </div>
