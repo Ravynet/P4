@@ -100,10 +100,15 @@ $(window).load(function(){
         e.preventDefault();
         var $form = $(this);
         var $url = $form.attr('action');
+        //var $string = $('.h3Com').text();
+        var $nbCom = parseInt($('.h3Com h3').text());
+        $nbCom -= 1;
+        console.log($nbCom);
         $.post($url)
             .done(function(){
                 $form.parent().parent($('.comment-section-container')).slideUp('slow', function () {
                     $form.parent().parent($('.comment-section-container')).remove();
+                    if ($nbCom > 1) {$('.h3Com h3').text($nbCom + ' Commentaires signalés')} else {$('.h3Com h3').text($nbCom + ' Commentaire signalé')};
                 });
             })
     });
@@ -128,13 +133,16 @@ $(window).load(function(){
     // Ajax signaler un commentaire
     $('.blog-post').on('click', '.hollow', function (e) {
         e.preventDefault();
+        //$('.report').text('En cours...');
         var $a = $(this);
+        $a.text('En cours...');
         var $url = $a.attr('href');
         $.ajax($url, {type: 'POST'})
             .done(function(){
                 $a.parent($('.comment-section-text')).fadeOut('slow', function () {
                     $a.parent($('.comment-section-text')).after('<i class="fa fa-times-circle-o infobulle" aria-hidden="true" aria-label="Commentaire signalé"></i>');
                     $a.parent($('.comment-section-text')).after('<p>Ce commentaire a été signalé comme inapproprié.</p>');
+                    $a.parent($('.comment-section-text')).remove();
                 });
             })
     });
