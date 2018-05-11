@@ -425,11 +425,14 @@
 }
 
 .adminModifier .h3Com {
+    display: flex;
     margin-top: 3rem;
     margin-bottom: 3rem;
 }
 
 .adminModifier .h3Com i {
+    font-size: 1.9375rem;
+    margin-bottom: .5rem;
     color: black;
 }
 
@@ -501,6 +504,10 @@
 .blogBillet #sendComment {
     margin-bottom: 2rem;
     margin-top: 2rem;
+}
+
+.blogBillet input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset;
 }
 
 .blogBillet .callout>:last-child {
