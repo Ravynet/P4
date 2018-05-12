@@ -42,6 +42,7 @@ class AdminController extends Controller
                 array_push($this->data, $nbPages);
                 array_push($this->data, $cPage);
                 array_push($this->data, $sumComReported);
+                $_SESSION['sumComReported'] = $sumComReported;
             } else {
                 header('location: admin/login');
             }
@@ -265,12 +266,7 @@ class AdminController extends Controller
     {
         header('location: modifier?'.$_POST['id']);
         $this->comment->deleteCom($idCom);
-    }
-
-    public function releaseCom($idCom)
-    {
-        header('location: modifier?'.$_POST['id']);
-        $this->comment->releaseCom($idCom);
+        $_SESSION['sumComReported']['nbComSignaleTotal']= $_SESSION['sumComReported']['nbComSignaleTotal'] - 1;
     }
 
     public function modererCom($idCom)
@@ -283,7 +279,11 @@ class AdminController extends Controller
 
             $this->comment->moderateCom($comModere);
         }
-        header('location: modifier?'.$_POST['id']);
+        if (App::isAjax()){
+            $_SESSION['sumComReported']['nbComSignaleTotal']= $_SESSION['sumComReported']['nbComSignaleTotal'] - 1;
+        } else {
+            header('location: modifier?'.$_POST['id']);
+        }
     }
 
     public function commentaire()
