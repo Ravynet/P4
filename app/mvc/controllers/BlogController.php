@@ -11,6 +11,7 @@ class BlogController extends Controller
     public function index()
     {
         $cPage = $this->params;
+
         if ($cPage != null) {
             $nbTicket = $this->paging->getPaging();
             $nbPages = ceil($nbTicket['nbBillets']/Config::get("art_per_page_blog"));
@@ -64,6 +65,7 @@ class BlogController extends Controller
         $comment = $this->comment->getComment($idTicket);
         $data = $comment[0];
         $this->comment->report($idTicket);
+        $_SESSION['sumComReported']['nbComSignaleTotal']= $_SESSION['sumComReported']['nbComSignaleTotal'] + 1;
         header('location: billet?' . $data->getTicketId() . '#commentaire');
     }
 
