@@ -13,41 +13,45 @@
     <body>
         <div class="default">
             <div id="main-content">
-                <header>
-                    <!-- Start Top Bar -->
-                    <div class="fixed">
-                        <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
-                            <button class="menu-icon" type="button" data-toggle="example-menu"></button>
-                            <div class="title-bar-title">Menu</div>
-                        </div>
-                    </div>
+                <!-- Start Top Bar -->
+                <input type="checkbox" class="menu-toggle" id="menu-toggle">
+                <div class="mobile-bar">
+                    <label for="menu-toggle" class="menu-icon1">
+                        <span></span>
+                    </label>
+                </div>
 
-                    <div class="top-bar navbar-fixed-top scrolled" id="example-menu">
-                        <div class="top-bar-left">
-                            <ul class="menu">
-                                <li class="menu-text">Jean FORTEROCHE</li>
-                                <li class="<?php if(App::getRouter()->getController() == 'accueil') echo 'active'; ?>"><a id="accueil" href="<?= LOCAL ?>">Accueil</a></li>
-                                <li class="<?php if(App::getRouter()->getController() == 'blog') echo 'active'; ?>"><a id="blog" href="<?= LOCAL ?>blog?1">Les épisodes</a></li>
-                            </ul>
-                            <ul class="menu login">
+                <header class="header">
+                    <nav class="navbar">
+                        <ul>
+                            <li class="menu-text">Jean FORTEROCHE</li>
+                            <li class="<?php if(App::getRouter()->getController() == 'accueil') echo 'active'; ?>"><a id="accueil" href="<?= LOCAL ?>">Accueil</a></li>
+                            <li class="<?php if(App::getRouter()->getController() == 'blog') echo 'active'; ?>"><a id="blog" href="<?= LOCAL ?>blog?1">Les épisodes</a></li>
+                        </ul>
+                        <ul>
                             <?php if (isset($_SESSION['id']) && isset($_SESSION['username'])){?>
-                                    <li class="menu-text">Bonjour <?= $_SESSION['pseudo'];?></li>
-                                    <li class="<?php if(App::getRouter()->getController() == 'admin') echo 'active'; ?>">
-                                        <a id="tableau" href="<?= LOCAL ?>admin?1">Tableau de bord</a>
-                                    </li>
-                                    <li>
-                                        <a id="deconnexion" href="<?= LOCAL ?>admin/deconnexion">Déconnexion</a>
-                                    </li>
+                                <li class="menu-text">Bonjour <?= $_SESSION['pseudo'];?></li>
+                                <li class="roundNotification <?php if(App::getRouter()->getController() == 'admin') echo 'active'; ?>">
+                                    <a id="tableau" href="<?= LOCAL ?>admin?1">Tableau de bord
+                                        <span class="roundNotification_count"><?= $_SESSION['sumComReported']['nbComSignaleTotal']; ?></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a id="deconnexion" href="<?= LOCAL ?>admin/deconnexion">Déconnexion</a>
+                                </li>
                             <?php } else { ?>
-                                    <li>
-                                        <a id="connexion" href="<?= LOCAL ?>admin?1">Connexion</a>
-                                    </li>
+                                <li>
+                                    <a id="connexion" href="<?= LOCAL ?>admin?1">Connexion</a>
+                                </li>
                             <?php } ?>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- End Top Bar -->
+
+                        </ul>
+                    </nav>
                 </header>
+                <!-- End Top Bar -->
+                    
+                <div class="container">
+
                 <div class="callout large" id="bandeau">
                     <div class="row column text-center">
                         <h1>Billet simple pour l'Alaska</h1>
@@ -55,7 +59,9 @@
                     </div>
                 </div>
 
-                <div class="content row medium-8 large-7 columns">
+
+
+                <div class="content row medium-11 columns">
 
                     <?php echo $data['content']; ?>
 
@@ -96,6 +102,7 @@
                         </div>
                     </div>
                 </footer>
+                </div>
 
             </div>
         </div>
