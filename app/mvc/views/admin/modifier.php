@@ -66,11 +66,11 @@ Config::set("site_name", Config::get("site_name").' - '.$ticket->getTitle());
                     <div>
                         <form action="supprimerCom?<?=$comment->getComId()?>" method="post" class="delete">
                             <input type="hidden" name="id" value="<?=$ticket->getId()?>">
-                            <button type="submit" class="hollow button button alert" href="supprimerCom?">Supprimer ce commentaire</button>
+                            <button type="submit" class="hollow button button alert" href="supprimerCom?<?=$comment->getComId()?>">Supprimer ce commentaire</button>
                         </form>
                         <form action="modererCom?<?=$comment->getComId()?>" method="post" class="moderate">
                             <input type="hidden" name="id" value="<?=$ticket->getId()?>">
-                            <button type="submit" class="hollow button" href="modererCom?">Modérer ce commentaire</button>
+                            <button type="submit" class="hollow button" href="modererCom?<?=$comment->getComId()?>">Modérer ce commentaire</button>
                             <textarea class="montextarea" rows="10" cols="60" name="contenuCommentaire"><?=$comment->getComContenu()?></textarea>
                         </form>
                     </div>
