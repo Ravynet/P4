@@ -50,7 +50,7 @@ Config::set("site_name", Config::get("site_name").' - Les épisodes');
                     <li class="current"><span ><?=$i?></span></li>
                     <?php
                 } else {?>
-                    <li><a href="blog?<?=$i?>" aria-label="Page 2"><?=$i?></a></li>
+                    <li><a href="blog?<?=$i?>" aria-label="Page"><?=$i?></a></li>
                     <?php
                 }
             }
