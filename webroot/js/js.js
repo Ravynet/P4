@@ -95,26 +95,26 @@ $(window).load(function(){
         return false;
     });
 
-    // Ajax supprimer un commentaire
-    $('.delete').on('submit', function(e){
+    // Ajax signaler un commentaire
+    $('.blog-post').on('click', '.hollow', function(e){
         e.preventDefault();
-        var $form = $(this);
-        var $url = $form.attr('action');
-        //var $string = $('.h3Com').text();
-        var $nbCom = parseInt($('.h3Com h3').text());
-        $nbCom -= 1;
-        console.log($nbCom);
+        var $a = $(this);
+        $a.text('En cours...');
+        var $url = $a.attr('href');
         $.post($url)
             .done(function(){
-                $form.parent().parent($('.comment-section-container')).slideUp('slow', function () {
-                    $form.parent().parent($('.comment-section-container')).remove();
-                    if ($nbCom > 1) {$('.h3Com h3').text($nbCom + ' Commentaires signalés')} else {$('.h3Com h3').text($nbCom + ' Commentaire signalé')};
+                $a.parent($('.comment-section-text')).fadeOut('slow', function () {
+                    $a.parent($('.comment-section-text')).after('<i class="fa fa-times-circle-o infobulle" aria-hidden="true" aria-label="Commentaire signalé"></i>');
+                    $a.parent($('.comment-section-text')).after('<p>Ce commentaire a été signalé comme inapproprié.</p>');
+                    $a.parent($('.comment-section-text')).remove();
+                    $nbCom = parseInt($('.roundNotification_count').text()) + 1;
+                    $('.roundNotification_count').text($nbCom);
                 });
             })
     });
 
     // Ajax envoyer un commentaire
-    $('#add-comment').on('submit', function(e) {
+    $('#add-comment').on('submit', function(e){
         e.preventDefault();
         $('#envoyer').prop('value', 'Envoi en cours...');
         var $form = $(this);
@@ -130,19 +130,37 @@ $(window).load(function(){
             })
     });
 
-    // Ajax signaler un commentaire
-    $('.blog-post').on('click', '.hollow', function (e) {
+    // Ajax supprimer un commentaire
+    $('.delete').on('submit', function(e){
         e.preventDefault();
-        //$('.report').text('En cours...');
-        var $a = $(this);
-        $a.text('En cours...');
-        var $url = $a.attr('href');
-        $.ajax($url, {type: 'POST'})
+        var $form = $(this);
+        var $url = $form.attr('action');
+        var $nbCom = parseInt($('.h3Com h3').text()) - 1;
+        $.post($url)
             .done(function(){
-                $a.parent($('.comment-section-text')).fadeOut('slow', function () {
-                    $a.parent($('.comment-section-text')).after('<i class="fa fa-times-circle-o infobulle" aria-hidden="true" aria-label="Commentaire signalé"></i>');
-                    $a.parent($('.comment-section-text')).after('<p>Ce commentaire a été signalé comme inapproprié.</p>');
-                    $a.parent($('.comment-section-text')).remove();
+                $form.parent().parent($('.comment-section-container')).slideUp('slow', function () {
+                    $form.parent().parent($('.comment-section-container')).remove();
+                    if ($nbCom > 1) {$('.h3Com h3').text($nbCom + ' Commentaires signalés')} else {$('.h3Com h3').text($nbCom + ' Commentaire signalé')}
+                    $nbCom = parseInt($('.roundNotification_count').text()) - 1;
+                    $('.roundNotification_count').text($nbCom);
+                });
+            })
+    });
+
+    // Ajax modérer un commentaire
+    $('.moderate').on('submit', function(e){
+        e.preventDefault();
+        var $form = $(this);
+        var $url = $form.attr('action');
+        var $nbCom = parseInt($('.h3Com h3').text()) -1 ;
+        $.post($url, $form.serializeArray())
+            .done(function(data, text, jqxhr){
+                $form.parent().parent($('.comment-section-container')).slideUp('slow', function () {
+                    $form.parent().parent($('.comment-section-container')).remove();
+                    if ($nbCom > 1) {$('.h3Com h3').text($nbCom + ' Commentaires signalés')} else {$('.h3Com h3').text($nbCom + ' Commentaire signalé')}
+                    $nbCom = parseInt($('.roundNotification_count').text()) - 1;
+                    $('.roundNotification_count').text($nbCom);
+                    console.log(data);
                 });
             })
     });
