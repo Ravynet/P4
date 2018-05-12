@@ -33,9 +33,11 @@ class View
 
     public function printViewAjax()
     {
-        $this->path = substr($this->path,0,-4).'Ajax.php';
-        $data = $this->data[0];
-        include $this->path;
+        if (file_exists(substr($this->path,0,-4).'Ajax.php')){
+            $this->path = substr($this->path,0,-4).'Ajax.php';
+            $data = $this->data[0];
+            include $this->path;
+        }
     }
 
     public static function getDefaultViewPath()
