@@ -36,6 +36,31 @@
     background-color: transparent;
 }
 
+.default .top-bar .login #tableau {
+    position: relative;
+}
+
+.default .top-bar .login .roundNotification_count {
+    min-width: 20px;
+    height: 20px;
+    z-index: 10;
+    border-radius: 50%;
+    position: absolute;
+    right: -4px;
+    text-align: center;
+    display: block;
+    line-height: 18px;
+    top: 1px;
+    font-size: 12px;
+    background-color: #324350;
+    color: lightblue;
+    border: 1px solid #4199E7;
+}
+
+.default .top-bar .login #tableau:hover .roundNotification_count {
+    border-color: lightblue;
+}
+
 .navbar-fixed-top.scrolled {
     background-color: #2F4351 !important;
     transition: background-color 200ms linear;
