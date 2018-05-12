@@ -8,6 +8,7 @@
     flex-direction: column;
     min-height: 100vh;
     width: 100%;
+    overflow: hidden;
 }
 
 /**---- Menu Icon Effects ----**/
@@ -202,6 +203,7 @@
     position: relative;
     top: 60px;
     background-color: #fff;
+    overflow: hidden;
     -webkit-transition: -webkit-transform 300ms ease;
     transition: -webkit-transform 300ms ease;
     transition: transform 300ms ease;
@@ -460,6 +462,11 @@
     /* admin/commentaire.php */
     .adminIndex .table-expend-row .titre {
         display: none;
+    }
+
+    .blogIndex .blog-post .callout .menu {
+        flex-direction: row;
+        justify-content: space-between;
     }
 
     .blogBillet .comment-section-name {
