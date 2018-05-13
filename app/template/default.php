@@ -59,8 +59,6 @@
                     </div>
                 </div>
 
-
-
                 <div class="content row medium-11 columns">
 
                     <?php echo $data['content']; ?>
