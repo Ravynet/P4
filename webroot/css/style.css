@@ -1,3 +1,29 @@
+
+.top_link {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    right:	20px;
+    bottom: 370px;
+    display: none;
+    /*padding: 10px;*/
+    background:	#4199E7;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    opacity: 0.9;
+    z-index: 100;
+}
+
+.top_link .fa-angle-double-up {
+    color: #fff;
+    font-size: 38px;
+    font-weight: bold;
+    position: absolute;
+    top: 0px;
+    left: 7px;
+}
+
 /* default.php */
 .default {
     display: -webkit-box;
