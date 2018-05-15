@@ -81,7 +81,7 @@ $(window).load(function(){
         return valid;
     });
 
-    // Smooth Scroll sur page billet.php
+    // Smooth Scroll Down sur page billet.php
     $('.js-scrollTo').on('click', function() { // Au clic sur un élément
         var page = $(this).attr('href'); // Page cible
         var speed = 750; // Durée de l'animation (en ms)
@@ -89,7 +89,28 @@ $(window).load(function(){
         return false;
     });
 
-    // Ajax signaler un commentaire
+    // Smooth Scroll Top + ajout de la flèche
+    $('#main-content').append('<a href="#bandeau" class="top_link" title="Revenir en haut de page"><i class="fa fa-angle-double-up"></i></a>');
+
+    $(window).scroll(function(){
+        posScroll = $(document).scrollTop();
+        if(posScroll >=1000)
+            $('.top_link').fadeIn('slow');
+        else
+            $('.top_link').fadeOut('slow');
+
+        var content = $('.default').height() - $('footer').height();
+        var el = $('.top_link').offset();
+    });
+
+    $('.top_link').on('click', function() { // Au clic sur un élément
+        var page = $(this).attr('href'); // Page cible
+        var speed = 750; // Durée de l'animation (en ms)
+        $('html, body').animate( { scrollTop: $(page).offset().top }, speed ); // Go
+        return false;
+    });
+
+        // Ajax signaler un commentaire
     $('.blog-post').on('click', '.hollow', function(e){
         e.preventDefault();
         var $a = $(this);
