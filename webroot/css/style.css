@@ -1,17 +1,14 @@
-
 .top_link {
     width: 40px;
-    height: 40px;
+    text-align: center;
     position: fixed;
     right:	20px;
     bottom: 370px;
     display: none;
-    /*padding: 10px;*/
     background:	#4199E7;
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
     border-radius: 8px;
-    opacity: 0.9;
     z-index: 100;
 }
 
@@ -19,8 +16,7 @@
     color: #fff;
     font-size: 38px;
     font-weight: bold;
-    position: absolute;
-    top: 0px;
+    top: 0;
     left: 7px;
 }
 

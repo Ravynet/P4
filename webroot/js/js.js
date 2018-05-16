@@ -90,7 +90,7 @@ $(window).load(function(){
     });
 
     // Smooth Scroll Top + ajout de la flèche
-    $('#main-content').append('<a href="#bandeau" class="top_link" title="Revenir en haut de page"><i class="fa fa-angle-double-up"></i></a>');
+    $('.container').append('<a href="#bandeau" class="top_link" title="Revenir en haut de page"><i class="fa fa-angle-double-up"></i></a>');
 
     $(window).scroll(function(){
         posScroll = $(document).scrollTop();

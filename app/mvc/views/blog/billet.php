@@ -64,4 +64,3 @@ Config::set("site_name", Config::get("site_name").' - '.htmlspecialchars($ticket
 
     </div>
 </div>
-
