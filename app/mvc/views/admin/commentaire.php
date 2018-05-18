@@ -32,37 +32,7 @@ Config::set("site_name", Config::get("site_name").' - Commentaire signalé');
             </tbody>
         </table>
 
-        <ul class="pagination text-center" role="navigation" aria-label="Pagination" data-page="<?=Config::get('art_per_page_admin')?>" data-total="<?= count($tickets)?>">
-            <?php
-            if ($cPage-1 == 0) { ?>
-                <li class="pagination-previous disabled">Précédent<span class="show-for-sr">page</span></li>
-                <?php
-            } else { ?>
-                <li class="pagination-previous"><a href="commentaire?<?=$cPage-1?>" aria-label="Previous page">Précédent<span class="show-for-sr">page</span></a></li>
-                <?php
-            }
-            ?>
-            <?php
-            for ($i = 1; $i <= $nbPage; $i++) {
-                if ($i == $cPage) { ?>
-                    <li class="current"><span ><?=$i?></span></li>
-                    <?php
-                } else {?>
-                    <li><a href="commentaire?<?=$i?>" aria-label="Page 2"><?=$i?></a></li>
-                    <?php
-                }
-            }
-            ?>
-            <?php
-            if ($cPage+1 > $nbPage) { ?>
-                <li class="pagination-next disabled">Suivant<span class="show-for-sr">page</span></li>
-                <?php
-            } else { ?>
-                <li class="pagination-next"><a href="commentaire?<?=$cPage+1?>" aria-label="Next page">Suivant<span class="show-for-sr">page</span></a></li>
-                <?php
-            }
-            ?>
-        </ul>
+        <?php include("../app/mvc/views/core/paging.php") ?>
 
     </div>
 </div>
