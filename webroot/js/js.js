@@ -92,23 +92,64 @@ $(window).load(function(){
     // Smooth Scroll Top + ajout de la flèche
     $('.container').append('<a href="#bandeau" class="top_link" title="Revenir en haut de page"><i class="fa fa-angle-double-up"></i></a>');
 
-    $(window).scroll(function(){
-        posScroll = $(document).scrollTop();
-        if(posScroll >=1000)
-            $('.top_link').fadeIn('slow');
-        else
-            $('.top_link').fadeOut('slow');
-
-        var content = $('.default').height() - $('footer').height();
-        var el = $('.top_link').offset();
-    });
-
     $('.top_link').on('click', function() { // Au clic sur un élément
         var page = $(this).attr('href'); // Page cible
         var speed = 750; // Durée de l'animation (en ms)
-        $('html, body').animate( { scrollTop: $(page).offset().top }, speed ); // Go
+        $('html, body').animate( { scrollTop: $(page).offset().top - 60}, speed ); // Go
         return false;
     });
+
+    //Show scroll to top when not at top
+    $(window).scroll(function () {
+
+        posScroll = $(document).scrollTop();
+        if(posScroll >=1000) {
+            $('.top_link').fadeIn('slow');
+        } else {
+            $('.top_link').fadeOut('slow');
+        }
+
+        if ($(window).width() < 740) {
+            if ($(window).scrollTop() >= $(document).height() - $(window).height() - $('footer').height()) {
+                var xxx = ($(document).height() - $(window).height());
+                xxx = xxx - $(window).scrollTop();
+                xxx = ($('footer').height()) - xxx;
+                $('.top_link').css('bottom', xxx + 'px');
+            } else {
+                $('.top_link').css('bottom', '14px');
+            }
+        } else {
+            //Normal Footer
+            if ($(window).scrollTop() >= $(document).height() - $(window).height() - $('footer').height()) {
+                var xxx = ($(document).height() - $(window).height());
+                xxx = xxx - $(window).scrollTop();
+                xxx = ($('footer').height()+14) - xxx;
+                $('.top_link').css('bottom', xxx + 'px');
+            } else {
+                $('.top_link').css('bottom', '14px');
+            }
+        }
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // Ajax signaler un commentaire
     $('.blog-post').on('click', '.hollow', function(e){

@@ -1,6 +1,5 @@
 <?php
 
-
 class TicketsManagerPDO extends Manager
 {
 

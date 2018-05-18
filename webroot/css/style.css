@@ -3,13 +3,13 @@
     text-align: center;
     position: fixed;
     right:	20px;
-    bottom: 370px;
+    bottom: 14px;
     display: none;
     background:	#4199E7;
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
     border-radius: 8px;
-    z-index: 100;
+    z-index: 1;
 }
 
 .top_link .fa-angle-double-up {
@@ -263,6 +263,12 @@
     transition: transform 300ms ease, -webkit-transform 300ms ease;
 }
 
+@media (min-width: 880px) {
+    .container {
+        top: 70px!important;
+    }
+}
+
 @media (min-width: 789px) {
 
     .menu-toggle:checked ~ .header {
@@ -318,8 +324,14 @@
         padding: .7rem 1rem;
     }
 
-    .container { top: 0; }
+    .container { top: 64px; }
 
+}
+
+@media (min-width: 754px) {
+    .container {
+        top: 57px!important;
+    }
 }
 
 .default #bandeau {
@@ -327,10 +339,11 @@
     background-position: center;
     padding: 120px;
     margin-bottom: 0;
+    border: none;
 }
 
 .default #bandeau div {
-    padding-top: 50px;
+    /*padding-top: 50px;*/
 }
 
 .default #bandeau div h1 {
