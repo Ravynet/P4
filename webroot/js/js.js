@@ -129,29 +129,9 @@ $(window).load(function(){
                 $('.top_link').css('bottom', '14px');
             }
         }
-
     });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // Ajax signaler un commentaire
+    // Ajax signaler un commentaire
     $('.blog-post').on('click', '.hollow', function(e){
         e.preventDefault();
         var $a = $(this);

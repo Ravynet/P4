@@ -22,7 +22,7 @@ class App
 
             // INSTANTIATE Controller
             if (!class_exists($controller_class)) {
-                $controller_class = (ucfirst(Config::get("default_controller").'Controller'));
+                $controller_class = ucfirst(Config::get("default_controller").'Controller');
                 $controller_method = '';
             }
             $controller_object = new $controller_class();
