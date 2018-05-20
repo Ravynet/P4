@@ -81,6 +81,9 @@ $(window).load(function(){
         return valid;
     });
 
+    // Show arrow scroll
+    $('.container').append('<a href="#bandeau" class="top_link" title="Revenir en haut de page"><i class="fa fa-angle-double-up"></i></a>');
+
     // Smooth Scroll Down sur page billet.php
     $('.js-scrollTo').on('click', function() { // Au clic sur un élément
         var page = $(this).attr('href'); // Page cible
@@ -89,9 +92,7 @@ $(window).load(function(){
         return false;
     });
 
-    // Smooth Scroll Top + ajout de la flèche
-    $('.container').append('<a href="#bandeau" class="top_link" title="Revenir en haut de page"><i class="fa fa-angle-double-up"></i></a>');
-
+    // Smooth Scroll Top
     $('.top_link').on('click', function() { // Au clic sur un élément
         var page = $(this).attr('href'); // Page cible
         var speed = 750; // Durée de l'animation (en ms)
@@ -99,7 +100,7 @@ $(window).load(function(){
         return false;
     });
 
-    //Show scroll to top when not at top
+    //Show scroll when not at top
     $(window).scroll(function () {
 
         posScroll = $(document).scrollTop();

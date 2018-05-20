@@ -1,9 +1,18 @@
 <?php
 
+/**
+ * Class CommentsManagerPDO
+ */
 class CommentsManagerPDO extends Manager
 {
 
     // RECUPERE LES COMMENTAIRES SIGNALES POUR L'ADMIN
+    /**
+     * @param $nbBillets
+     * @param $perPage
+     * @param $cPage
+     * @return array
+     */
     public function getCommentaireSignale($nbBillets, $perPage, $cPage)
     {
         if ($cPage != null) {
@@ -34,6 +43,9 @@ class CommentsManagerPDO extends Manager
     }
 
     // RECUPERE LE NOMBRE TOTAL DE COMMENTAIRES SIGNALES POUR L'ADMIN
+    /**
+     * @return mixed
+     */
     public function getNbComSignaleTotal()
     {
         $q = $this->getBdd()->query('SELECT
@@ -47,6 +59,9 @@ class CommentsManagerPDO extends Manager
         return $nbComSignaleTotal;
     }
 
+    /**
+     * @return mixed
+     */
     public function getTicketsWithComReported () {
         $q = $this->getBdd()->query('SELECT COUNT(DISTINCT commentaires.bil_id) AS nbBilletsWithComSignale FROM commentaires WHERE commentaires.com_signale = 1');
         $q->setFetchMode(PDO::FETCH_ASSOC);
@@ -57,6 +72,10 @@ class CommentsManagerPDO extends Manager
     }
 
     // RECUPERE LES COMMENTAIRES SUIVANT L'ARTICLE SELECTIONNE
+    /**
+     * @param $id
+     * @return array
+     */
     public function getComments($id){
 
         $q = $this->getBdd()->prepare('SELECT commentaires.*,
@@ -76,6 +95,10 @@ class CommentsManagerPDO extends Manager
     }
 
     // RECUPERE LE COMMENTAIRES SIGNALE
+    /**
+     * @param $id
+     * @return array
+     */
     public function getComment($id){
 
         $q = $this->getBdd()->prepare('SELECT commentaires.*
@@ -93,6 +116,9 @@ class CommentsManagerPDO extends Manager
     }
 
     // AJOUT D'UN COMMENTAIRE
+    /**
+     * @param Commentaire $commentaire
+     */
     public function addComment(Commentaire $commentaire){
 
         $q = $this->getBdd()->prepare('INSERT INTO commentaires(com_auteur, com_contenu, bil_id, com_date)
@@ -107,6 +133,9 @@ class CommentsManagerPDO extends Manager
     }
 
     // SIGNALE UN COMMENTAIRE
+    /**
+     * @param $commentaire
+     */
     public function report($commentaire) {
 
         $q = $this->getBdd()->prepare('UPDATE commentaires SET com_signale = 1 WHERE com_id = :id');
@@ -117,6 +146,9 @@ class CommentsManagerPDO extends Manager
     }
 
     // SUPPRIME UN COMMENTAIRE
+    /**
+     * @param $id
+     */
     public function deleteCom($id) {
         $q = $this->getBdd()->prepare('DELETE FROM commentaires
                                                 WHERE com_id = :id');
@@ -125,6 +157,9 @@ class CommentsManagerPDO extends Manager
     }
 
     // MODERE UN COMMENTAIRE
+    /**
+     * @param Commentaire $commentaire
+     */
     public function moderateCom(Commentaire $commentaire) {
 
         $q = $this->getBdd()->prepare('UPDATE commentaires
@@ -137,6 +172,10 @@ class CommentsManagerPDO extends Manager
         $q->execute();
     }
 
+    /**
+     * @param $user
+     * @return mixed
+     */
     public function lastComment($user) {
         $q = $this->getBdd()->prepare('SELECT *,
                                                 DATE_FORMAT(commentaires.com_date, "%d/%m/%Y à %Hh%i") AS com_date

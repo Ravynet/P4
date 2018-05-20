@@ -1,7 +1,15 @@
 <?php
 
+/**
+ * Class AdminMangerPDO
+ */
 class AdminMangerPDO extends Manager
 {
+    /**
+     * @param $username
+     * @param $pass_hache
+     * @return mixed
+     */
     public function connexion($username, $pass_hache)
     {
         // Vérification des identifiants

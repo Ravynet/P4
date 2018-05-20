@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @param $class_name
+ * @return string
+ */
 function __autoload($class_name)
 {
     $lib_path = LIB.DS.ucfirst($class_name).'.php';

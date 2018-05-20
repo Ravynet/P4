@@ -1,9 +1,16 @@
 <?php
 
+/**
+ * Class TicketsManagerPDO
+ */
 class TicketsManagerPDO extends Manager
 {
 
     // RECUPERE L'ARTICLE SELECTIONNE ET LE NOMBRE COMMENTAIRES
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function getTicket($id) {
 
         $q = $this->getBdd()->prepare('SELECT billets.*, 
@@ -29,6 +36,12 @@ class TicketsManagerPDO extends Manager
     }
 
     // RECUPERE TOUT LES ARTICLES ET LE NOMBRE DE COMMENTAIRE ASSOCIE
+    /**
+     * @param $nbBillets
+     * @param $perPage
+     * @param $cPage
+     * @return array
+     */
     public function getAllBillets($nbBillets, $perPage, $cPage){
 
         if ($cPage != null) {
@@ -54,6 +67,9 @@ class TicketsManagerPDO extends Manager
     }
 
     // SUPPRIME L'ARTICLE SELECTIONNE
+    /**
+     * @param $id
+     */
     public function delete($id) {
         $q = $this->getBdd()->prepare('DELETE billets, commentaires
                                         FROM billets 
@@ -66,6 +82,9 @@ class TicketsManagerPDO extends Manager
     }
 
     // MISE A JOUR D'UN ARTICLE
+    /**
+     * @param Billet $billet
+     */
     public function update(Billet $billet) {
 
         $q = $this->getBdd()->prepare('UPDATE billets
@@ -80,6 +99,9 @@ class TicketsManagerPDO extends Manager
     }
 
     // AJOUT D'UN ARTICLE
+    /**
+     * @param Billet $billet
+     */
     public function addTicket(Billet $billet){
 
         $q = $this->getBdd()->prepare('INSERT INTO billets(titre, contenu, auteur, datePublication, dateModification)
@@ -92,11 +114,13 @@ class TicketsManagerPDO extends Manager
 
     }
 
+    /**
+     * @return string
+     */
     public function lastId() {
         $lastId = $this->getBdd()->lastInsertId();
 
         return $lastId;
     }
-
 
 }

@@ -1,14 +1,26 @@
 <?php
 
+/**
+ * Class App
+ */
 class App
 {
+    /**
+     * @var
+     */
     protected static $router;
 
+    /**
+     * @return mixed
+     */
     public static function getRouter()
     {
         return self::$router;
     }
 
+    /**
+     * @param $uri
+     */
     public static function run($uri)
     {
 
@@ -50,6 +62,9 @@ class App
 
     }
 
+    /**
+     * @return bool
+     */
     public static function isAjax()
     {
         return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';

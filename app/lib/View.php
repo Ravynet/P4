@@ -1,11 +1,26 @@
 <?php
 
+/**
+ * Class View
+ */
 class View
 {
 
+    /**
+     * @var array
+     */
     protected $data = [];
+
+    /**
+     * @var bool|string
+     */
     protected $path;
 
+    /**
+     * View constructor.
+     * @param array $data
+     * @param $path
+     */
     function __construct($data = [], $path)
     {
         if (!$path) {
@@ -16,11 +31,17 @@ class View
         $this->path = $path;
     }
 
+    /**
+     *
+     */
     public function printView()
     {
         echo $this->render();
     }
 
+    /**
+     * @return string
+     */
     public function render()
     {
         $data = $this->data;
@@ -31,6 +52,9 @@ class View
         return $content;
     }
 
+    /**
+     *
+     */
     public function printViewAjax()
     {
         if (file_exists(substr($this->path,0,-4).'Ajax.php')){
@@ -40,6 +64,9 @@ class View
         }
     }
 
+    /**
+     * @return bool|string
+     */
     public static function getDefaultViewPath()
     {
         $router = App::getRouter();

@@ -1,16 +1,28 @@
 <?php
 
+/**
+ * Class AdminController
+ */
 class AdminController extends Controller
 {
 
+    /**
+     * @var AdminMangerPDO
+     */
     private $connexion;
 
+    /**
+     * AdminController constructor.
+     */
     function __construct()
     {
         $this->connexion = new AdminMangerPDO();
         parent::__construct();
     }
 
+    /**
+     * @return string
+     */
     public function index()
     {
         if ($this->params != null) {
@@ -51,6 +63,9 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     *
+     */
     public function ajouter()
     {
 
@@ -115,6 +130,13 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * @param $max_width
+     * @param $max_height
+     * @param $source_file
+     * @param $dst_dir
+     * @return bool
+     */
     function resize_crop_image($max_width, $max_height, $source_file, $dst_dir)
     {
         $imgsize = getimagesize($source_file);
@@ -165,6 +187,9 @@ class AdminController extends Controller
         $image($dst_img, $dst_dir, $quality);
     }
 
+    /**
+     * @param $idTicket
+     */
     public function modifier($idTicket)
     {
         if (!empty($_POST)) {
@@ -245,6 +270,9 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     *
+     */
     public function supprimer()
     {
         if (!empty($_POST)) {
@@ -262,6 +290,9 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * @param $idCom
+     */
     public function supprimerCom($idCom)
     {
         header('location: modifier?'.$_POST['id']);
@@ -269,6 +300,9 @@ class AdminController extends Controller
         $_SESSION['sumComReported']['nbComSignaleTotal']= $_SESSION['sumComReported']['nbComSignaleTotal'] - 1;
     }
 
+    /**
+     * @param $idCom
+     */
     public function modererCom($idCom)
     {
         if (!empty($_POST)) {
@@ -286,6 +320,9 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * @return string
+     */
     public function commentaire()
     {
         if ($this->params != null) {
@@ -306,6 +343,9 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     *
+     */
     public function login()
     {
         if (!empty($_POST)) {
@@ -336,6 +376,9 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     *
+     */
     public function deconnexion()
     {
         // Suppression des variables de session et de la session

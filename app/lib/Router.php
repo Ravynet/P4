@@ -1,12 +1,28 @@
 <?php
 
+/**
+ * Class Router
+ */
 class Router
 {
 
+    /**
+     * @var mixed|null
+     */
     protected $controller;
+    /**
+     * @var mixed|null
+     */
     protected $action;
+    /**
+     * @var
+     */
     protected $params;
 
+    /**
+     * Router constructor.
+     * @param $uri
+     */
     function __construct($uri)
     {
         // EXPLODE URI

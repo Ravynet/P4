@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title><?php echo Config::get("site_name"); ?></title>
+        <title><?= Config::get("site_name"); ?></title>
+        <meta name="description" content="<?= Config::get("description"); ?>" />
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="<?=CSS?>"/>
         <link rel="stylesheet" href="<?=FONTAWESOME?>"/>
@@ -9,6 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
         <link rel="icon" type="image/x-icon" href="<?=LOCAL . 'webroot/images/favicon.png'?>"/>
+        <meta name="google-site-verification" content="jOYyk2tZwAF8XU9ubJyz5qGzzMkKtiacY-xSuH_3TGE" />
     </head>
 
     <body>

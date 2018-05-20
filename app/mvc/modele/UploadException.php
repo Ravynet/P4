@@ -1,9 +1,19 @@
 <?php
 
+/**
+ * Class UploadException
+ */
 class UploadException
 {
-private $message;
+    /**
+     * @var string
+     */
+    private $message;
 
+    /**
+     * UploadException constructor.
+     * @param $code
+     */
     public function __construct($code)
     {
         switch ($code) {

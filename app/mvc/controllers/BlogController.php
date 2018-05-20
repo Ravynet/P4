@@ -1,13 +1,22 @@
 <?php
 
+/**
+ * Class BlogController
+ */
 class BlogController extends Controller
 {
 
+    /**
+     * BlogController constructor.
+     */
     function __construct()
     {
         parent::__construct();
     }
 
+    /**
+     * @return string
+     */
     public function index()
     {
         $cPage = $this->params;
@@ -27,6 +36,11 @@ class BlogController extends Controller
     }
 
     // Show one ticket
+
+    /**
+     * @param $id
+     * @return string
+     */
     public function billet($id)
     {
         $ticket = $this->ticket->getTicket($id);
@@ -39,6 +53,9 @@ class BlogController extends Controller
         }
     }
 
+    /**
+     * @param $idTicket
+     */
     public function commenter($idTicket)
     {
         if (!empty($_POST)) {
@@ -60,6 +77,9 @@ class BlogController extends Controller
         }
     }
 
+    /**
+     * @param $idTicket
+     */
     public function signaler($idTicket)
     {
         $comment = $this->comment->getComment($idTicket);

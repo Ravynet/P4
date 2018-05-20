@@ -5,6 +5,8 @@ Config::set("default_controller", "accueil");
 Config::set("default_action", "index");
 Config::set("default_layout", "default");
 
+Config::set("description", 'Venez découvrir le nouveau roman de Jean Forteroche "Billet simple pour l\' Alaska" Dans ce format Blog, vivez une aventure à vous couper le souffle.');
+
 Config::set("art_per_page_blog", "4");
 Config::set("art_per_page_admin", "6");
 

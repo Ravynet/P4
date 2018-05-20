@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * Class PagingManagerPDO
+ */
 class PagingManagerPDO extends Manager
 {
+    /**
+     * @return mixed
+     */
     public function getPaging()
     {
         $q = $this->getBdd()->query('SELECT COUNT(id) AS nbBillets FROM billets');

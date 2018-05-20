@@ -1,9 +1,16 @@
 <?php
 
+/**
+ * Class Commentaire
+ */
 class Commentaire {
 
     protected $com_id, $com_date, $com_auteur, $com_contenu, $bil_id, $com_signale;
 
+    /**
+     * Commentaire constructor.
+     * @param array $donnees
+     */
     public function __construct($donnees = []) {
         if (!empty($donnees))
         {
@@ -11,6 +18,9 @@ class Commentaire {
         }
     }
 
+    /**
+     * @param $donnees
+     */
     public function hydrate($donnees) {
 
         foreach ($donnees as $key => $value)
@@ -66,6 +76,9 @@ class Commentaire {
         return $this->bil_id;
     }
 
+    /**
+     * @return mixed
+     */
     public function getComSignale()
     {
         return $this->com_signale;
@@ -112,6 +125,9 @@ class Commentaire {
         $this->bil_id = $bil_id;
     }
 
+    /**
+     * @param $com_signale
+     */
     public function setComSignale($com_signale)
     {
         $this->com_signale = $com_signale;
