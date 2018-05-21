@@ -50,13 +50,13 @@
                         <ul>
                             <li class="menu-text">Jean FORTEROCHE</li>
                             <li class="<?php if(App::getRouter()->getController() == 'accueil') echo 'active'; ?>"><a id="accueil" href="<?= LOCAL ?>">Accueil</a></li>
-                            <li class="<?php if(App::getRouter()->getController() == 'blog') echo 'active'; ?>"><a id="blog" href="<?= LOCAL ?>blog?1">Les épisodes</a></li>
+                            <li class="<?php if(App::getRouter()->getController() == 'blog') echo 'active'; ?>"><a id="blog" href="<?= LOCAL ?>blog-1">Les épisodes</a></li>
                         </ul>
                         <ul>
                             <?php if (isset($_SESSION['id']) && isset($_SESSION['username'])){?>
                                 <li class="menu-text">Bonjour <?= $_SESSION['pseudo'];?></li>
                                 <li class="roundNotification <?php if(App::getRouter()->getController() == 'admin') echo 'active'; ?>">
-                                    <a id="tableau" href="<?= LOCAL ?>admin?1">Tableau de bord
+                                    <a id="tableau" href="<?= LOCAL ?>admin-1">Tableau de bord
                                         <span class="roundNotification_count"><?= $_SESSION['sumComReported']['nbComSignaleTotal']; ?></span>
                                     </a>
                                 </li>
@@ -65,7 +65,7 @@
                                 </li>
                             <?php } else { ?>
                                 <li>
-                                    <a id="connexion" href="<?= LOCAL ?>admin?1">Connexion</a>
+                                    <a id="connexion" href="<?= LOCAL ?>admin-1">Connexion</a>
                                 </li>
                             <?php } ?>
 

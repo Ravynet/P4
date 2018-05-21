@@ -14,7 +14,7 @@ Config::set("site_name", Config::get("site_name").' - Les épisodes');
 
         <?php foreach ($tickets as $ticket) { ?>
             <section class="blog-post">
-                <h1><a href="blog/billet?<?= $ticket->getId()?>"><?= htmlspecialchars($ticket->getTitle())?></a>
+                <h1><a href="blog/billet-<?= $ticket->getId()?>"><?= htmlspecialchars($ticket->getTitle())?></a>
                     <div>
                         <small id="publie">Publié le : <?= $ticket->getDatePublication()?></small>
                         <small id="modifie"><?= $ticket->getDateModification() != $ticket->getDatePublication() ? 'Modifié le : '. $ticket->getDateModification() : ''?></small>
@@ -28,7 +28,7 @@ Config::set("site_name", Config::get("site_name").' - Les épisodes');
                 <div class="callout">
                     <ul class="menu simple">
                         <li class="auteur"><i class="fa fa-user" aria-hidden="true"></i><span><?= htmlspecialchars($ticket->getAuthor())?></span></li>
-                        <li><a href="blog/billet?<?= $ticket->getId() . '#commentaire' ?>"><?= $ticket->getNbcoms() . ($ticket->getNbcoms() > 1 ? ' Commentaires' : ' Commentaire')?></a></li>
+                        <li><a href="blog/billet-<?= $ticket->getId() . '#commentaire' ?>"><?= $ticket->getNbcoms() . ($ticket->getNbcoms() > 1 ? ' Commentaires' : ' Commentaire')?></a></li>
                     </ul>
                 </div>
             </section>

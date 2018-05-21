@@ -15,7 +15,7 @@ Config::set("site_name", Config::get("site_name").' - '.$ticket->getTitle());
 
     if (isset($message)){
         echo '<div class="callout success"><p>', $message, '</p></div>
-              <a type="button" class="button" href="' . LOCAL . 'admin?1">Retour au tableau de bord</a>';
+              <a type="button" class="button" href="' . LOCAL . 'admin-1">Retour au tableau de bord</a>';
     }
 ?>
 
@@ -64,13 +64,13 @@ Config::set("site_name", Config::get("site_name").' - '.$ticket->getTitle());
                         <p>Le <?= $comment->getComDate() ?></p>
                     </div>
                     <div>
-                        <form action="supprimerCom?<?=$comment->getComId()?>" method="post" class="delete">
+                        <form action="supprimerCom-<?=$comment->getComId()?>" method="post" class="delete">
                             <input type="hidden" name="id" value="<?=$ticket->getId()?>">
-                            <button type="submit" class="hollow button button alert" href="supprimerCom?<?=$comment->getComId()?>">Supprimer ce commentaire</button>
+                            <button type="submit" class="hollow button button alert" href="supprimerCom-<?=$comment->getComId()?>">Supprimer ce commentaire</button>
                         </form>
-                        <form action="modererCom?<?=$comment->getComId()?>" method="post" class="moderate">
+                        <form action="modererCom-<?=$comment->getComId()?>" method="post" class="moderate">
                             <input type="hidden" name="id" value="<?=$ticket->getId()?>">
-                            <button type="submit" class="hollow button" href="modererCom?<?=$comment->getComId()?>">Modérer ce commentaire</button>
+                            <button type="submit" class="hollow button" href="modererCom-<?=$comment->getComId()?>">Modérer ce commentaire</button>
                             <textarea class="montextarea" rows="10" cols="60" name="contenuCommentaire"><?=$comment->getComContenu()?></textarea>
                         </form>
                     </div>

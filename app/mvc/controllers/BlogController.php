@@ -72,7 +72,7 @@ class BlogController extends Controller
                 $lastComment = $this->comment->lastComment($_POST['nom']);
                 array_push($this->data, $lastComment);
             } else {
-                header('location: billet?' . $idTicket . '#commentaire');
+                header('location: billet-' . $idTicket . '#commentaire');
             }
         }
     }
@@ -86,7 +86,7 @@ class BlogController extends Controller
         $data = $comment[0];
         $this->comment->report($idTicket);
         $_SESSION['sumComReported']['nbComSignaleTotal']= $_SESSION['sumComReported']['nbComSignaleTotal'] + 1;
-        header('location: billet?' . $data->getTicketId() . '#commentaire');
+        header('location: billet-' . $data->getTicketId() . '#commentaire');
     }
 
 }

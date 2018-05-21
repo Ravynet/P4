@@ -1,4 +1,4 @@
-<?php $path = App::getRouter()->getController() . '?'; ?>
+<?php $path = App::getRouter()->getController() . '-'; ?>
 <?php if ($nbPage > 1) { ;?>
     <ul class="pagination text-center" role="navigation" aria-label="Pagination" data-page="<?=Config::get('art_per_page_admin')?>" data-total="<?= count($tickets)?>">
         <?php

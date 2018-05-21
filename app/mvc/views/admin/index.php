@@ -21,7 +21,7 @@ Config::set("site_name", Config::get("site_name").' - Administration');
             <div class="callout alert">
                 <ul class="menu simple">
                     <li>
-                        <a href="admin/commentaire?1">Vous avez <?=$sumComReported['nbComSignaleTotal']?> <?= $sumComReported['nbComSignaleTotal'] > 1 ? ' commentaires signalés' : 'commentaire signalé'?></a>
+                        <a href="admin/commentaire-1">Vous avez <?=$sumComReported['nbComSignaleTotal']?> <?= $sumComReported['nbComSignaleTotal'] > 1 ? ' commentaires signalés' : 'commentaire signalé'?></a>
                     </li>
                 </ul>
             </div>
@@ -55,9 +55,9 @@ Config::set("site_name", Config::get("site_name").' - Administration');
                         <td class="date"><?= $ticket->getDatePublication();?></td>
                         <td><?= strlen($ticket->getTitle()) > 50 ? substr($ticket->getTitle(), 0, 50)." ..." : $ticket->getTitle();?></td>
                         <td class="text-center nbComs"> <?= $ticket->getnbComs();?> </td>
-                        <td class="text-center comSignale"> <?= $ticket->getNbComSignale() > 0 ?'<a class="comSignale" href="admin/modifier?'.$ticket->getId().'#commentaire">'.$ticket->getNbComSignale().'</a>':'-';?><a></td>
+                        <td class="text-center comSignale"> <?= $ticket->getNbComSignale() > 0 ?'<a class="comSignale" href="admin/modifier-'.$ticket->getId().'#commentaire">'.$ticket->getNbComSignale().'</a>':'-';?><a></td>
                         <td>
-                            <a class="button primary" href="admin/modifier?<?=$ticket->getId();?>">Modifier</a>
+                            <a class="button primary" href="admin/modifier-<?=$ticket->getId();?>">Modifier</a>
                             <button id="delete" class="button alert" data-open="Modal">Supprimer</button>
                             <div class="reveal" id="Modal" data-reveal>
                                 <h1>Attention !</h1>
@@ -67,7 +67,7 @@ Config::set("site_name", Config::get("site_name").' - Administration');
                                 <form action="admin/supprimer" method="post">
                                     <button class="button" data-close aria-label="Close modal" type="button">Annuler</button>
                                     <input type="hidden" name="id" value="<?= $ticket->getId(); ?>">
-                                    <button type="submit" class="button alert" href="admin/supprimer?<?= $ticket->getId();?>">Supprimer</button>
+                                    <button type="submit" class="button alert" href="admin/supprimer-<?= $ticket->getId();?>">Supprimer</button>
                                 </form>
                                 <button class="close-button" data-close aria-label="Close modal" type="button">
                                     <span aria-hidden="true">&times;</span>

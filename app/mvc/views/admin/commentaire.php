@@ -22,9 +22,9 @@ Config::set("site_name", Config::get("site_name").' - Commentaire signalé');
                     <tr class="table-expend-row adminCommentaire" data-open-details>
                         <td class="date"><?= $ticket->getDatePublication()->format('d/m/Y à H:i');?></td>
                         <td class="titre"><?= strlen($ticket->getTitle()) > 50 ? substr($ticket->getTitle(), 0, 50)." ..." : $ticket->getTitle();?></td>
-                        <td class="text-center"> <?= $ticket->getNbComSignale() > 0 ?'<a class="comSignale" href="modifier?'.$ticket->getId().'#commentaire">'.$ticket->getNbComSignale().'</a>':'-';?><a></td>
+                        <td class="text-center"> <?= $ticket->getNbComSignale() > 0 ?'<a class="comSignale" href="modifier-'.$ticket->getId().'#commentaire">'.$ticket->getNbComSignale().'</a>':'-';?><a></td>
                         <td>
-                            <a class="button primary" href="modifier?<?=$ticket->getId();?>#commentaire">Modifier</a>
+                            <a class="button primary" href="modifier-<?=$ticket->getId();?>#commentaire">Modifier</a>
                         </td>
                     </tr>
                <?php }?>

@@ -26,7 +26,7 @@ class Router
     function __construct($uri)
     {
         // EXPLODE URI
-        $uri_parts = explode("?", $uri);
+        $uri_parts = explode("-", $uri);
         $path = $uri_parts[0];
         $path_parts = explode("/", $path);
 

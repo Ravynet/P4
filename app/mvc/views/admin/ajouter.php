@@ -14,7 +14,7 @@ if (isset($errorImage)) {
 
 if (isset($message)){
     echo '<div class="callout success"><p>', $message, '</p></div>
-          <a type="button" class="button" href="' . LOCAL . 'admin?1">Retour au tableau de bord</a>';
+          <a type="button" class="button" href="' . LOCAL . 'admin-1">Retour au tableau de bord</a>';
 } else { ?>
     <div class="adminAjouter">
         <form method="post" enctype="multipart/form-data" runat="server">

@@ -286,7 +286,7 @@ class AdminController extends Controller
                 }
             }
             $this->ticket->delete($_POST['id']);
-            header('location: ' . LOCAL . 'admin?1');
+            header('location: ' . LOCAL . 'admin-1');
         }
     }
 
@@ -295,7 +295,7 @@ class AdminController extends Controller
      */
     public function supprimerCom($idCom)
     {
-        header('location: modifier?'.$_POST['id']);
+        header('location: modifier-'.$_POST['id']);
         $this->comment->deleteCom($idCom);
         $_SESSION['sumComReported']['nbComSignaleTotal']= $_SESSION['sumComReported']['nbComSignaleTotal'] - 1;
     }
@@ -316,7 +316,7 @@ class AdminController extends Controller
         if (App::isAjax()){
             $_SESSION['sumComReported']['nbComSignaleTotal']= $_SESSION['sumComReported']['nbComSignaleTotal'] - 1;
         } else {
-            header('location: modifier?'.$_POST['id']);
+            header('location: modifier-'.$_POST['id']);
         }
     }
 
@@ -366,7 +366,7 @@ class AdminController extends Controller
                     setcookie('id', $user['id'] . '-' . $user['username'] . '-' . $user['password'], time()+ 3600*24*3 , '/', null, false, true);
                 }
 
-                header('location: ../admin?1');
+                header('location: ../admin-1');
             }
             else
             {
@@ -388,6 +388,6 @@ class AdminController extends Controller
         // Suppression des cookies de connexion automatique
         setcookie('id', '', time() -1, '/');
 
-        header('location: ../blog?1');
+        header('location: ../blog-1');
     }
 }

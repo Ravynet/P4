@@ -25,7 +25,7 @@ Config::set("site_name", Config::get("site_name").' - '.htmlspecialchars($ticket
         <hr>
 
         <h3 id="sendComment">Envoyer un commentaire</h3>
-        <form action="commenter?<?=$ticket->getId()?>" method="post" id="add-comment">
+        <form action="commenter-<?=$ticket->getId()?>" method="post" id="add-comment">
             <label>Votre nom :</label><input type="text" name="nom" id="comNom">
             <label>Contenu :</label><textarea rows="8" cols="60" name="contenu" id="comContenu" required></textarea>
             <input type="hidden" name="id" value="<?=$ticket->getId() ?>">
@@ -55,7 +55,7 @@ Config::set("site_name", Config::get("site_name").' - '.htmlspecialchars($ticket
                 } elseif ($comment->getComSignale() == 2) {
                     echo '<i class="fa fa-check-circle-o infobulle" aria-hidden="true" aria-label="Commentaire validé par l\'administrateur"></i>';
                 } else {
-                    echo '<a class="hollow button report" href="signaler?'.$comment->getComId().'"i>Signaler ce commentaire</a>';
+                    echo '<a class="hollow button report" href="signaler-'.$comment->getComId().'"i>Signaler ce commentaire</a>';
                 }
                 ?>
             </div>

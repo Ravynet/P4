@@ -10,6 +10,6 @@
     </div>
     <div class="comment-section-text">
         <p><?= $data->getComContenu()?></p>
-        <a class="hollow button" href="signaler?<?=$data->getComId()?>">Signaler ce commentaire</a>
+        <a class="hollow button" href="signaler-<?=$data->getComId()?>">Signaler ce commentaire</a>
     </div>
 </div>
