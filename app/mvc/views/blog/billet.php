@@ -34,7 +34,7 @@ Config::set("site_name", Config::get("site_name").' - '.htmlspecialchars($ticket
         <div id="commentaire"></div>
         <hr>
 
-        <h3 class="h3Com"><i class="fa fa-comment-o" aria-hidden="true"></i><?= count($ticketCom) . (count($ticketCom) > 1 ? ' Commentaires' : ' Commentaire');?></h3>
+        <span class="h3Com"><i class="fa fa-comment-o" aria-hidden="true"></i><h3><?= count($ticketCom) . (count($ticketCom) > 1 ? ' Commentaires' : ' Commentaire');?></h3></span>
 
         <?php foreach ($ticketCom as $comment){ ?>
         <div class="comment-section-container">

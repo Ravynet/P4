@@ -950,6 +950,7 @@
 }
 
 .blogBillet .h3Com {
+    display: flex;
     margin: 4rem 0 4rem 0;
 }
 
@@ -957,6 +958,11 @@
     margin-bottom: 2rem;
     border: 1px solid #ccc;
     padding: 2rem;
+}
+
+.blogBillet .h3Com i {
+    font-size: 36px;
+    padding-bottom: 10px
 }
 
 .blogBillet .comment-section-text {

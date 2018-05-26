@@ -164,6 +164,16 @@ $(window).load(function(){
                 $('#comNom').val('');
                 $('#comContenu').val('');
                 $('#envoyer').prop('value', 'Envoyer');
+                var txt = $('.h3Com > h3').text();
+                /([0-9]+)/.exec(txt);
+                var int = parseInt(RegExp.$1);
+                int = int+1;
+                if(int > 1) {
+                    $('.h3Com > h3').text(int + ' Commentaires');
+                } else {
+                    $('.h3Com > h3').text(int + ' Commentaire');
+                }
+
             })
     });
 
