@@ -24,7 +24,7 @@ Config::set("site_name", Config::get("site_name").' - Commentaire signalé');
                         <td class="titre"><?= strlen($ticket->getTitle()) > 50 ? substr($ticket->getTitle(), 0, 50)." ..." : $ticket->getTitle();?></td>
                         <td class="text-center"> <?= $ticket->getNbComSignale() > 0 ?'<a class="comSignale" href="modifier-'.$ticket->getId().'#commentaire">'.$ticket->getNbComSignale().'</a>':'-';?><a></td>
                         <td>
-                            <a class="button primary" href="modifier-<?=$ticket->getId();?>#commentaire">Modifier</a>
+                            <a class="button primary" href="modifier-<?=$ticket->getId();?>">Modifier</a>
                         </td>
                     </tr>
                <?php }?>
